@@ -1,0 +1,119 @@
+---
+/**
+ * Componente de Navegación
+ * Proporciona links a las secciones principales de Cognicode
+ * 
+ * Uso:
+ * <Navegacion />
+ */
+---
+
+<nav class="barra-navegacion">
+	<div class="nav-contenedor">
+		<a href="/" class="logo">
+			<span class="logo-texto">Cognicode</span>
+		</a>
+
+		<ul class="nav-enlaces">
+			<li><a href="/" class="enlace-nav">Inicio</a></li>
+			<li><a href="/Services" class="enlace-nav">Servicios</a></li>
+			<li><a href="/Contacto" class="enlace-nav">Contacto</a></li>
+		</ul>
+	</div>
+</nav>
+
+<style>
+	.barra-navegacion {
+		background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(8, 145, 178, 0.1) 100%);
+		border-bottom: 2px solid rgba(6, 182, 212, 0.2);
+		padding: 16px 0;
+		position: sticky;
+		top: 0;
+		z-index: 1000;
+		backdrop-filter: blur(10px);
+	}
+
+	.nav-contenedor {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 20px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.logo {
+		display: flex;
+		align-items: center;
+		text-decoration: none;
+		gap: 8px;
+		transition: all 0.3s ease;
+	}
+
+	.logo:hover {
+		transform: translateY(-2px);
+	}
+
+	.logo-texto {
+		font-size: 24px;
+		font-weight: 800;
+		background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		letter-spacing: -0.5px;
+	}
+
+	.nav-enlaces {
+		display: flex;
+		list-style: none;
+		gap: 32px;
+		margin: 0;
+		padding: 0;
+	}
+
+	.enlace-nav {
+		color: #f0f9ff;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 14px;
+		transition: all 0.3s ease;
+		position: relative;
+		letter-spacing: 0.3px;
+	}
+
+	.enlace-nav::after {
+		content: '';
+		position: absolute;
+		bottom: -4px;
+		left: 0;
+		width: 0;
+		height: 2px;
+		background: linear-gradient(135deg, #06b6d4 0%, #0ea5e9 100%);
+		transition: width 0.3s ease;
+	}
+
+	.enlace-nav:hover::after {
+		width: 100%;
+	}
+
+	.enlace-nav:hover {
+		color: #06b6d4;
+	}
+
+	@media (max-width: 768px) {
+		.nav-contenedor {
+			flex-direction: column;
+			gap: 16px;
+		}
+
+		.nav-enlaces {
+			gap: 16px;
+			font-size: 12px;
+		}
+
+		.logo-texto {
+			font-size: 20px;
+		}
+	}
+</style>
