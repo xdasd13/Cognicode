@@ -1,0 +1,102 @@
+/* Variables de color y tipografía - Paleta Premium Profesional */
+:root {
+	/* Paleta de colores - Azul Premium */
+	--color-primary: #0a84ff;
+	--color-primary-dark: #0870d8;
+	--color-accent: #e6f3ff;
+	--color-gray: #5f6368;
+	--color-gray-light: #80868b;
+	--color-gray-lighter: #e8eaed;
+	--color-gray-lightest: #f8f9fa;
+	--color-text-primary: #1a1a1a;
+	--color-text-secondary: #5f6368;
+	--color-background: #fafbfc;
+	--color-white: #ffffff;
+
+	/* Tipografía */
+	--fuente-primaria: 'Inter', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+	--fuente-tamaño-base: 16px;
+	--fuente-peso-regular: 400;
+	--fuente-peso-medium: 600;
+	--fuente-peso-bold: 700;
+	--fuente-peso-extra-bold: 800;
+
+	/* Espaciado */
+	--espaciado-xs: 4px;
+	--espaciado-sm: 8px;
+	--espaciado-md: 16px;
+	--espaciado-lg: 24px;
+	--espaciado-xl: 32px;
+	--espaciado-2xl: 48px;
+
+	/* Transiciones */
+	--transicion-rapida: 0.2s ease;
+	--transicion-normal: 0.3s ease;
+	--transicion-lenta: 0.5s ease;
+
+	/* Sombras modernas y sutiles */
+	--sombra-sm: 0 4px 20px rgba(0, 0, 0, 0.06);
+	--sombra-md: 0 8px 24px rgba(10, 132, 255, 0.08);
+	--sombra-lg: 0 12px 40px rgba(10, 132, 255, 0.12);
+}
+
+/* Reset y estilos base */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	font-family: var(--fuente-primaria);
+	font-size: var(--fuente-tamaño-base);
+	font-weight: var(--fuente-peso-regular);
+	color: var(--color-text-primary);
+	background-color: var(--color-background);
+	line-height: 1.6;
+	scroll-behavior: smooth;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height: 1.2;
+}
+
+a {
+	color: var(--color-primary);
+	text-decoration: none;
+	transition: color var(--transicion-rapida);
+}
+
+a:hover {
+	color: var(--color-primary-dark);
+}
+
+/* Utilidades */
+.contenedor {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 var(--espaciado-md);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	html,
+	body {
+		font-size: 15px;
+	}
+}
+
+@media (max-width: 480px) {
+	html,
+	body {
+		font-size: 14px;
+	}
+}
