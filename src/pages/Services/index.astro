@@ -1,0 +1,241 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import TarjetaServicio from '../../components/TarjetaServicio.astro';
+import { servicios } from '../../data/servicios.js';
+---
+
+<Layout>
+	<div class="contenedor-servicios">
+		<header class="encabezado-servicios">
+			<div class="badge-encabezado">Nuestros Servicios</div>
+			<h1 class="titulo-principal">Soluciones de Software Profesionales</h1>
+			<p class="subtitulo">
+				Diseñadas para impulsar el crecimiento de tu negocio con tecnología moderna y resultados medibles.
+			</p>
+		</header>
+
+		<main class="cuadricula-servicios">
+			{servicios.map((servicio) => (
+				<TarjetaServicio
+					titulo={servicio.titulo}
+					descripcion={servicio.descripcion}
+					costoAprox={servicio.costoAprox}
+					icono={servicio.icono as "ShoppingCart" | "Globe" | "Zap" | "Package"}
+				/>
+			))}
+		</main>
+
+		<section class="seccion-cta">
+			<div class="cta-contenido">
+				<h2>¿Listo para transformar tu negocio?</h2>
+				<p>Contáctanos hoy y descubre cómo podemos ayudarte a alcanzar tus objetivos.</p>
+				<a href="/Contacto" class="btn-cta">Iniciar Consulta Gratuita</a>
+			</div>
+		</section>
+	</div>
+</Layout>
+
+<style>
+	.contenedor-servicios {
+		min-height: 100vh;
+		background: linear-gradient(180deg, #fafbfc 0%, #f5f6f8 100%);
+		padding: 100px 20px;
+	}
+
+	.encabezado-servicios {
+		max-width: 700px;
+		margin: 0 auto 80px;
+		text-align: center;
+	}
+
+	.badge-encabezado {
+		display: inline-block;
+		padding: 8px 16px;
+		background: rgba(10, 132, 255, 0.1);
+		color: #0a84ff;
+		border-radius: 20px;
+		font-size: 0.85rem;
+		font-weight: 700;
+		letter-spacing: 0.5px;
+		text-transform: uppercase;
+		margin-bottom: 16px;
+	}
+
+	.titulo-principal {
+		margin: 0 0 20px 0;
+		font-size: 2.8rem;
+		font-weight: 800;
+		color: #1a1a1a;
+		line-height: 1.15;
+		letter-spacing: -1px;
+	}
+
+	.subtitulo {
+		margin: 0;
+		font-size: 1.1rem;
+		line-height: 1.6;
+		color: #626366;
+		max-width: 600px;
+		margin: 0 auto;
+	}
+
+	.cuadricula-servicios {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+		gap: 32px;
+		max-width: 1280px;
+		margin: 0 auto 100px;
+	}
+
+	.seccion-cta {
+		max-width: 700px;
+		margin: 0 auto;
+		padding: 80px 60px;
+		background: linear-gradient(135deg, #0a84ff 0%, #1e7ce8 100%);
+		border-radius: 16px;
+		text-align: center;
+		box-shadow: 0 20px 60px rgba(10, 132, 255, 0.2);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.seccion-cta::before {
+		content: '';
+		position: absolute;
+		top: -50%;
+		right: -50%;
+		width: 200%;
+		height: 200%;
+		background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+		background-size: 50px 50px;
+		z-index: 1;
+	}
+
+	.cta-contenido {
+		position: relative;
+		z-index: 2;
+	}
+
+	.seccion-cta h2 {
+		margin: 0 0 16px 0;
+		font-size: 2rem;
+		font-weight: 800;
+		color: white;
+		line-height: 1.2;
+		letter-spacing: -0.5px;
+	}
+
+	.seccion-cta p {
+		margin: 0 0 32px 0;
+		font-size: 1.05rem;
+		color: rgba(255, 255, 255, 0.95);
+		line-height: 1.6;
+	}
+
+	.btn-cta {
+		display: inline-block;
+		padding: 14px 40px;
+		background: white;
+		color: #0a84ff;
+		text-decoration: none;
+		border-radius: 10px;
+		font-weight: 800;
+		font-size: 1rem;
+		transition: all 0.3s ease;
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+		letter-spacing: 0.3px;
+	}
+
+	.btn-cta:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+	}
+
+	.btn-cta:active {
+		transform: translateY(-1px);
+	}
+
+	@media (max-width: 1024px) {
+		.cuadricula-servicios {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 28px;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.contenedor-servicios {
+			padding: 60px 16px;
+		}
+
+		.encabezado-servicios {
+			margin-bottom: 60px;
+		}
+
+		.titulo-principal {
+			font-size: 2.2rem;
+		}
+
+		.subtitulo {
+			font-size: 1rem;
+		}
+
+		.cuadricula-servicios {
+			grid-template-columns: 1fr;
+			gap: 24px;
+			margin-bottom: 80px;
+		}
+
+		.seccion-cta {
+			padding: 60px 40px;
+		}
+
+		.seccion-cta h2 {
+			font-size: 1.6rem;
+		}
+
+		.seccion-cta p {
+			font-size: 1rem;
+			margin-bottom: 24px;
+		}
+
+		.btn-cta {
+			padding: 12px 32px;
+			font-size: 0.95rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.contenedor-servicios {
+			padding: 40px 12px;
+		}
+
+		.encabezado-servicios {
+			margin-bottom: 40px;
+		}
+
+		.titulo-principal {
+			font-size: 1.7rem;
+		}
+
+		.subtitulo {
+			font-size: 0.95rem;
+		}
+
+		.cuadricula-servicios {
+			gap: 16px;
+			margin-bottom: 60px;
+		}
+
+		.seccion-cta {
+			padding: 40px 24px;
+		}
+
+		.seccion-cta h2 {
+			font-size: 1.3rem;
+		}
+
+		.seccion-cta p {
+			font-size: 0.9rem;
+		}
+	}
+</style>
