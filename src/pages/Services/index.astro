@@ -13,7 +13,6 @@ import { servicios } from '../../data/servicios.js';
 				Diseñadas para impulsar el crecimiento de tu negocio con tecnología moderna y resultados medibles.
 			</p>
 		</header>
-
 		<main class="cuadricula-servicios">
 			{servicios.map((servicio) => (
 				<TarjetaServicio
@@ -30,12 +29,16 @@ import { servicios } from '../../data/servicios.js';
 			<div class="cta-contenido">
 				<h2>¿Listo para transformar tu negocio?</h2>
 				<p>Contáctanos hoy y descubre cómo podemos ayudarte a alcanzar tus objetivos.</p>
-				<a href="/Contacto" class="btn-cta">Iniciar Consulta Gratuita</a>
+				<a href="https://wa.me/51939836897?text=Hola%20quiero%20más%20info%20sobre%20el%20servicio" 
+					target="_blank"
+					class="btn-cta"
+					class="inline-flex items-center px-5 py-3 bg-green-500 text-white font-medium rounded-lg hover:bg-green-600 transition">
+					Consultar via WhatsApp
+				</a>
 			</div>
 		</section>
 	</div>
 </Layout>
-
 <style>
 	.contenedor-servicios {
 		min-height: 100vh;
