@@ -17,6 +17,7 @@ import { servicios } from '../../data/servicios.js';
 		<main class="cuadricula-servicios">
 			{servicios.map((servicio) => (
 				<TarjetaServicio
+					id={servicio.id}
 					titulo={servicio.titulo}
 					descripcion={servicio.descripcion}
 					costoAprox={servicio.costoAprox}
