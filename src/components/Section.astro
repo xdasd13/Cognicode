@@ -1,0 +1,28 @@
+---
+interface Props {
+	id?: string;
+	title: string;
+	subtitle?: string;
+	bgColor?: 'white' | 'gray';
+}
+
+const { id, title, subtitle, bgColor = 'white' } = Astro.props;
+const bgClass = bgColor === 'gray' ? 'bg-light-gray' : 'bg-white';
+---
+
+<section id={id} class={`py-32 ${bgClass}`}>
+	<div class="max-w-7xl mx-auto px-8">
+		<div class="text-center mb-16">
+			<h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-dark mb-4">
+				{title}
+			</h2>
+			<div class="w-20 h-1 bg-turquoise mx-auto rounded mb-4"></div>
+			{subtitle && (
+				<p class="text-gray-custom text-lg max-w-2xl mx-auto">
+					{subtitle}
+				</p>
+			)}
+		</div>
+		<slot />
+	</div>
+</section>

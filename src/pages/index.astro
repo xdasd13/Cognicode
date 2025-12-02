@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
+import Section from '../components/Section.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import TeamMember from '../components/TeamMember.astro';
 import ContactInfo from '../components/ContactInfo.astro';
@@ -9,133 +10,7 @@ import FAQItem from '../components/FAQItem.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import Footer from '../components/Footer.astro';
 import { Icon } from 'astro-icon/components';
-
-const services = [
-	{
-		icon: 'lucide:lightbulb',
-		title: 'Consultoría Estratégica',
-		description: 'Análisis y planificación tecnológica alineada con tus objetivos de negocio.'
-	},
-	{
-		icon: 'lucide:zap',
-		title: 'Desarrollo a Medida',
-		description: 'Software personalizado que se adapta perfectamente a tus necesidades.'
-	},
-	{
-		icon: 'lucide:brain',
-		title: 'Inteligencia Artificial',
-		description: 'Implementación de soluciones inteligentes para optimizar procesos.'
-	},
-	{
-		icon: 'lucide:wrench',
-		title: 'Mantenimiento & Soporte',
-		description: 'Aseguramos el funcionamiento óptimo de tus sistemas tecnológicos.'
-	},
-	{
-		icon: 'lucide:cloud',
-		title: 'Cloud Solutions',
-		description: 'Migración y gestión de infraestructura en la nube.'
-	},
-	{
-		icon: 'lucide:bar-chart-3',
-		title: 'Análisis de Datos',
-		description: 'Convertimos datos en insights accionables para tu negocio.'
-	}
-];
-
-const teamMembers = [
-	{
-		initials: 'CR',
-		name: 'Carlos Rodríguez',
-		role: 'CEO & Founder',
-		bio: 'Visionario tecnológico con 15 años de experiencia'
-	},
-	{
-		initials: 'AM',
-		name: 'Ana Martínez',
-		role: 'CTO',
-		bio: 'Experta en arquitectura de software y IA'
-	},
-	{
-		initials: 'LF',
-		name: 'Luis Fernández',
-		role: 'Lead Developer',
-		bio: 'Especialista en desarrollo full-stack'
-	},
-	{
-		initials: 'MG',
-		name: 'María González',
-		role: 'Project Manager',
-		bio: 'Gestión ágil y entrega de valor continuo'
-	}
-];
-
-const contactItems = [
-	{
-		icon: 'lucide:mail',
-		title: 'Email',
-		value: 'contacto@cognicode.com'
-	},
-	{
-		icon: 'lucide:phone',
-		title: 'Teléfono',
-		value: '+52 (55) 1234-5678'
-	},
-	{
-		icon: 'lucide:map-pin',
-		title: 'Ubicación',
-		value: 'Ciudad de México, México'
-	}
-];
-
-const testimonials = [
-	{
-		quote: 'CogniCode transformó completamente nuestra infraestructura tecnológica. Su equipo entendió nuestras necesidades y entregó una solución que superó nuestras expectativas.',
-		author: 'Roberto Méndez',
-		role: 'Director de Tecnología',
-		company: 'TechCorp Industries'
-	},
-	{
-		quote: 'La implementación de IA en nuestros procesos ha incrementado nuestra eficiencia en un 40%. El equipo de CogniCode es excepcional.',
-		author: 'Laura Jiménez',
-		role: 'CEO',
-		company: 'InnovateX Solutions'
-	},
-	{
-		quote: 'Profesionalismo, expertise técnico y compromiso con los resultados. CogniCode es nuestro socio tecnológico de confianza.',
-		author: 'Miguel Ángel Torres',
-		role: 'Gerente General',
-		company: 'DataFlow México'
-	}
-];
-
-const faqs = [
-	{
-		id: 'faq-1',
-		question: '¿Cuánto tiempo toma desarrollar un proyecto?',
-		answer: 'El tiempo varía según la complejidad del proyecto. Proyectos pequeños pueden tomar de 4 a 8 semanas, mientras que soluciones empresariales complejas pueden requerir de 3 a 6 meses. Siempre establecemos un cronograma claro en la fase de planificación.'
-	},
-	{
-		id: 'faq-2',
-		question: '¿Ofrecen soporte después de la entrega?',
-		answer: 'Sí, ofrecemos diferentes planes de mantenimiento y soporte continuo. Incluimos garantía en todos nuestros proyectos y planes personalizados de soporte técnico, actualizaciones y mejoras continuas.'
-	},
-	{
-		id: 'faq-3',
-		question: '¿Trabajan con empresas de cualquier tamaño?',
-		answer: 'Absolutamente. Tenemos experiencia trabajando desde startups hasta grandes empresas. Adaptamos nuestros servicios y metodologías al tamaño y necesidades específicas de cada cliente.'
-	},
-	{
-		id: 'faq-4',
-		question: '¿Qué tecnologías utilizan?',
-		answer: 'Utilizamos tecnologías modernas y probadas según las necesidades del proyecto: React, Next.js, Node.js, Python, AWS, Azure, Google Cloud, y más. Siempre seleccionamos el stack tecnológico más adecuado para cada caso.'
-	},
-	{
-		id: 'faq-5',
-		question: '¿Cómo es el proceso de desarrollo?',
-		answer: 'Seguimos metodologías ágiles con sprints de 2 semanas. Mantenemos comunicación constante, demos regulares y entregas incrementales. Esto permite flexibilidad y asegura que el producto final cumpla exactamente con tus expectativas.'
-	}
-];
+import { services, teamMembers, contactItems, testimonials, faqs, clients, stats } from '../data/content';
 ---
 
 <Layout>
@@ -172,121 +47,65 @@ const faqs = [
 		</section>
 
 		<!-- Servicios Section -->
-		<section id="servicios" class="py-32 bg-light-gray">
-			<div class="max-w-7xl mx-auto px-8">
-				<h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 text-dark relative after:content-[''] after:block after:w-20 after:h-1 after:bg-turquoise after:mt-4 after:mx-auto after:rounded">
-					Nuestros Servicios
-				</h2>
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
-					{services.map(service => (
-						<ServiceCard 
-							icon={service.icon}
-							title={service.title}
-							description={service.description}
-						/>
-					))}
-				</div>
+		<Section id="servicios" title="Nuestros Servicios" bgColor="gray">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				{services.map(service => (
+					<ServiceCard {...service} />
+				))}
 			</div>
-		</section>
+		</Section>
 
 		<!-- Clientes Section -->
-		<section id="clientes" class="py-24 bg-white">
-			<div class="max-w-7xl mx-auto px-8">
-				<h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 text-dark relative after:content-[''] after:block after:w-20 after:h-1 after:bg-turquoise after:mt-4 after:mx-auto after:rounded">
-					Clientes que Confían en Nosotros
-				</h2>
-				<p class="text-center text-gray-custom text-lg mb-16 max-w-2xl mx-auto">
-					Empresas líderes que han transformado su visión tecnológica con CogniCode
-				</p>
-				<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 mt-16">
-					<div class="flex items-center justify-center p-8 text-2xl font-semibold text-gray-custom border-2 border-slate-200 rounded-lg transition-all duration-300 hover:border-turquoise hover:text-turquoise hover:scale-105">TechCorp</div>
-					<div class="flex items-center justify-center p-8 text-2xl font-semibold text-gray-custom border-2 border-slate-200 rounded-lg transition-all duration-300 hover:border-turquoise hover:text-turquoise hover:scale-105">InnovateX</div>
-					<div class="flex items-center justify-center p-8 text-2xl font-semibold text-gray-custom border-2 border-slate-200 rounded-lg transition-all duration-300 hover:border-turquoise hover:text-turquoise hover:scale-105">DataFlow</div>
-					<div class="flex items-center justify-center p-8 text-2xl font-semibold text-gray-custom border-2 border-slate-200 rounded-lg transition-all duration-300 hover:border-turquoise hover:text-turquoise hover:scale-105">SmartBiz</div>
-					<div class="flex items-center justify-center p-8 text-2xl font-semibold text-gray-custom border-2 border-slate-200 rounded-lg transition-all duration-300 hover:border-turquoise hover:text-turquoise hover:scale-105">CloudNet</div>
-					<div class="flex items-center justify-center p-8 text-2xl font-semibold text-gray-custom border-2 border-slate-200 rounded-lg transition-all duration-300 hover:border-turquoise hover:text-turquoise hover:scale-105">FutureApps</div>
-				</div>
+		<Section id="clientes" title="Clientes que Confían en Nosotros" subtitle="Empresas líderes que han transformado su visión tecnológica con CogniCode">
+			<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12">
+				{clients.map(client => (
+					<div class="flex items-center justify-center p-8 text-2xl font-semibold text-gray-custom border-2 border-slate-200 rounded-lg transition-all duration-300 hover:border-turquoise hover:text-turquoise hover:scale-105">
+						{client}
+					</div>
+				))}
 			</div>
-		</section>
+		</Section>
 
 		<!-- Sobre Nosotros Section -->
-		<section id="nosotros" class="py-32 bg-light-gray">
-			<div class="max-w-7xl mx-auto px-8">
-				<div class="max-w-4xl mx-auto">
-					<h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 text-dark relative after:content-[''] after:block after:w-20 after:h-1 after:bg-turquoise after:mt-4 after:mx-auto after:rounded">
-						Sobre Nosotros
-					</h2>
-					<p class="text-lg leading-relaxed text-gray-custom mb-6 mt-16">
-						En <strong class="text-turquoise">CogniCode</strong>, fusionamos inteligencia y tecnología para crear soluciones 
-						que transforman negocios. Nuestro equipo de expertos combina pensamiento estratégico 
-						con excelencia técnica.
-					</p>
-					<p class="text-lg leading-relaxed text-gray-custom mb-6">
-						Con años de experiencia en el sector tecnológico, nos especializamos en 
-						identificar el núcleo de los desafíos empresariales y desarrollar soluciones 
-						innovadoras que generan resultados medibles.
-					</p>
-					<div class="grid grid-cols-1 md:grid-cols-3 gap-12 mt-16">
+		<Section id="nosotros" title="Sobre Nosotros" bgColor="gray">
+			<div class="max-w-4xl mx-auto">
+				<p class="text-lg leading-relaxed text-gray-custom mb-6">
+					En <strong class="text-turquoise">CogniCode</strong>, fusionamos inteligencia y tecnología para crear soluciones 
+					que transforman negocios. Nuestro equipo de expertos combina pensamiento estratégico con excelencia técnica.
+				</p>
+				<p class="text-lg leading-relaxed text-gray-custom mb-6">
+					Con años de experiencia en el sector tecnológico, nos especializamos en 
+					identificar el núcleo de los desafíos empresariales y desarrollar soluciones 
+					innovadoras que generan resultados medibles.
+				</p>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-12 mt-16">
+					{stats.map(stat => (
 						<div class="text-center">
-							<div class="text-5xl font-bold text-turquoise mb-2">50+</div>
-							<div class="text-gray-custom text-base">Proyectos Exitosos</div>
+							<div class="text-5xl font-bold text-turquoise mb-2">{stat.number}</div>
+							<div class="text-gray-custom text-base">{stat.label}</div>
 						</div>
-						<div class="text-center">
-							<div class="text-5xl font-bold text-turquoise mb-2">30+</div>
-							<div class="text-gray-custom text-base">Clientes Satisfechos</div>
-						</div>
-						<div class="text-center">
-							<div class="text-5xl font-bold text-turquoise mb-2">98%</div>
-							<div class="text-gray-custom text-base">Tasa de Éxito</div>
-						</div>
-					</div>
+					))}
 				</div>
 			</div>
-		</section>
+		</Section>
 
 		<!-- Colaboradores Section -->
-		<section id="colaboradores" class="py-32 bg-white">
-			<div class="max-w-7xl mx-auto px-8">
-				<h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 text-dark relative after:content-[''] after:block after:w-20 after:h-1 after:bg-turquoise after:mt-4 after:mx-auto after:rounded">
-					Nuestro Equipo
-				</h2>
-				<p class="text-center text-gray-custom text-lg mb-16 max-w-2xl mx-auto">
-					Profesionales apasionados por la tecnología y la innovación
-				</p>
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mt-16">
-					{teamMembers.map(member => (
-						<TeamMember 
-							initials={member.initials}
-							name={member.name}
-							role={member.role}
-							bio={member.bio}
-						/>
-					))}
-				</div>
+		<Section id="colaboradores" title="Nuestro Equipo" subtitle="Profesionales apasionados por la tecnología y la innovación">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+				{teamMembers.map(member => (
+					<TeamMember {...member} />
+				))}
 			</div>
-		</section>
+		</Section>
 
 		<!-- Testimonios Section -->
-		<section id="testimonios" class="py-32 bg-light-gray">
-			<div class="max-w-7xl mx-auto px-8">
-				<h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 text-dark relative after:content-[''] after:block after:w-20 after:h-1 after:bg-turquoise after:mt-4 after:mx-auto after:rounded">
-					Lo Que Dicen Nuestros Clientes
-				</h2>
-				<p class="text-center text-gray-custom text-lg mb-16 max-w-2xl mx-auto">
-					Historias de éxito de quienes confiaron en nosotros
-				</p>
-				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
-					{testimonials.map(testimonial => (
-						<TestimonialCard 
-							quote={testimonial.quote}
-							author={testimonial.author}
-							role={testimonial.role}
-							company={testimonial.company}
-						/>
-					))}
-				</div>
+		<Section id="testimonios" title="Lo Que Dicen Nuestros Clientes" subtitle="Historias de éxito de quienes confiaron en nosotros" bgColor="gray">
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				{testimonials.map(testimonial => (
+					<TestimonialCard {...testimonial} />
+				))}
 			</div>
-		</section>
+		</Section>
 
 		<!-- FAQ Section -->
 		<section id="faq" class="py-32 bg-white">
@@ -299,11 +118,7 @@ const faqs = [
 				</p>
 				<div class="space-y-4 mt-16">
 					{faqs.map(faq => (
-						<FAQItem 
-							id={faq.id}
-							question={faq.question}
-							answer={faq.answer}
-						/>
+						<FAQItem {...faq} />
 					))}
 				</div>
 			</div>
@@ -321,14 +136,14 @@ const faqs = [
 				<div class="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-16 mt-16">
 					<div class="flex flex-col gap-8">
 						{contactItems.map(item => (
-							<ContactInfo 
-								icon={item.icon}
-								title={item.title}
-								value={item.value}
-							/>
+							<ContactInfo {...item} />
 						))}
 					</div>
-					<form id="contact-form" class="flex flex-col gap-6">
+					<form action="https://api.web3forms.com/submit" method="POST" id="contact-form" class="flex flex-col gap-6">
+						<input type="hidden" name="access_key" value="8dc97aae-bd7d-4fef-be4b-c8e96cd7c6d6">
+						<input type="hidden" name="subject" value="Nuevo mensaje de contacto desde CogniCode">
+						<input type="hidden" name="from_name" value="Formulario CogniCode">
+						
 						<div class="relative">
 							<input type="text" name="name" placeholder="Nombre completo" required class="w-full p-4 border-2 border-slate-200 rounded-lg font-sans text-base transition-all focus:outline-none focus:border-turquoise focus:ring-2 focus:ring-turquoise/20">
 						</div>
@@ -368,7 +183,10 @@ const faqs = [
 	const observer = new IntersectionObserver((entries) => {
 		entries.forEach(entry => {
 			if (entry.isIntersecting) {
-				entry.target.classList.add('animate-fade-in-up');
+				const element = entry.target as HTMLElement;
+				element.style.opacity = '1';
+				element.style.transform = 'translateY(0)';
+				element.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
 				observer.unobserve(entry.target);
 			}
 		});
@@ -376,9 +194,11 @@ const faqs = [
 
 	// Observe all sections
 	document.addEventListener('DOMContentLoaded', () => {
-		const sections = document.querySelectorAll('section');
+		const sections = document.querySelectorAll('section:not(.min-h-screen)');
 		sections.forEach(section => {
-			section.style.opacity = '0';
+			const element = section as HTMLElement;
+			element.style.opacity = '0';
+			element.style.transform = 'translateY(30px)';
 			observer.observe(section);
 		});
 
@@ -392,7 +212,7 @@ const faqs = [
 			}
 		});
 
-		// Contact form handling
+		// Contact form handling with Web3Forms
 		const contactForm = document.getElementById('contact-form') as HTMLFormElement;
 		const formMessage = document.getElementById('form-message');
 
@@ -406,27 +226,50 @@ const faqs = [
 			submitButton.disabled = true;
 			submitButton.innerHTML = '<span>Enviando...</span>';
 			
-			// Simulate form submission (replace with actual API call)
-			setTimeout(() => {
-				// Show success message
+			try {
+				const formData = new FormData(contactForm);
+				const response = await fetch('https://api.web3forms.com/submit', {
+					method: 'POST',
+					body: formData
+				});
+
+				const data = await response.json();
+
+				if (data.success) {
+					// Show success message
+					if (formMessage) {
+						formMessage.classList.remove('hidden', 'bg-red-100', 'text-red-700');
+						formMessage.classList.add('bg-green-100', 'text-green-700');
+						formMessage.textContent = '¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.';
+					}
+					
+					// Reset form
+					contactForm.reset();
+					
+					// Hide message after 5 seconds
+					setTimeout(() => {
+						formMessage?.classList.add('hidden');
+					}, 5000);
+				} else {
+					throw new Error(data.message || 'Error al enviar el formulario');
+				}
+			} catch (error) {
+				// Show error message
 				if (formMessage) {
-					formMessage.classList.remove('hidden', 'bg-red-100', 'text-red-700');
-					formMessage.classList.add('bg-green-100', 'text-green-700');
-					formMessage.textContent = '¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.';
+					formMessage.classList.remove('hidden', 'bg-green-100', 'text-green-700');
+					formMessage.classList.add('bg-red-100', 'text-red-700');
+					formMessage.textContent = 'Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.';
 				}
 				
-				// Reset form
-				contactForm.reset();
-				
-				// Re-enable button
-				submitButton.disabled = false;
-				submitButton.innerHTML = originalText;
-				
-				// Hide message after 5 seconds
+				// Hide error message after 5 seconds
 				setTimeout(() => {
 					formMessage?.classList.add('hidden');
 				}, 5000);
-			}, 1500);
+			} finally {
+				// Re-enable button
+				submitButton.disabled = false;
+				submitButton.innerHTML = originalText;
+			}
 		});
 	});
 </script>
