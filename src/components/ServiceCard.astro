@@ -9,59 +9,10 @@ interface Props {
 
 const { icon, title, description } = Astro.props;
 ---
-
-<div class="service-card">
-	<div class="service-icon">
-		<Icon name={icon} />
+<div class="group bg-white p-10 rounded-xl text-center transition-all duration-300 border border-slate-200 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(6,182,212,0.15)] hover:border-turquoise">
+	<div class="w-20 h-20 mx-auto mb-6 text-gray-custom transition-all duration-300 group-hover:text-turquoise group-hover:scale-110">
+		<Icon name={icon} class="w-full h-full" />
 	</div>
-	<h3>{title}</h3>
-	<p>{description}</p>
+	<h3 class="text-xl mb-4 text-dark font-semibold">{title}</h3>
+	<p class="text-gray-custom leading-relaxed text-sm">{description}</p>
 </div>
-
-<style>
-	.service-card {
-		background: white;
-		padding: 2.5rem 2rem;
-		border-radius: 12px;
-		text-align: center;
-		transition: all 0.3s ease;
-		border: 1px solid #e2e8f0;
-	}
-
-	.service-card:hover {
-		transform: translateY(-8px);
-		box-shadow: 0 10px 30px rgba(6, 182, 212, 0.15);
-		border-color: var(--turquoise);
-	}
-
-	.service-icon {
-		width: 80px;
-		height: 80px;
-		margin: 0 auto 1.5rem;
-		color: var(--gray);
-		transition: all 0.3s ease;
-	}
-
-	.service-icon :global(svg) {
-		width: 100%;
-		height: 100%;
-	}
-
-	.service-card:hover .service-icon {
-		color: var(--turquoise);
-		transform: scale(1.1);
-	}
-
-	.service-card h3 {
-		font-size: 1.3rem;
-		margin-bottom: 1rem;
-		color: var(--dark);
-		font-weight: 600;
-	}
-
-	.service-card p {
-		color: var(--gray);
-		line-height: 1.7;
-		font-size: 0.95rem;
-	}
-</style>

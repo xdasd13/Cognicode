@@ -1,0 +1,66 @@
+---
+interface Props {
+	question: string;
+	answer: string;
+	id: string;
+}
+
+const { question, answer, id } = Astro.props;
+---
+
+<div class="border border-slate-200 rounded-lg overflow-hidden hover:border-turquoise/50 transition-colors">
+	<button 
+		class="faq-button w-full px-6 py-4 text-left flex justify-between items-center gap-4 hover:bg-light-gray transition-colors"
+		data-faq-id={id}
+		aria-expanded="false"
+	>
+		<span class="font-semibold text-dark">{question}</span>
+		<svg class="faq-icon w-5 h-5 text-turquoise transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+		</svg>
+	</button>
+	<div class="faq-answer hidden px-6 pb-4 text-gray-custom leading-relaxed" data-faq-content={id}>
+		<p>{answer}</p>
+	</div>
+</div>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const faqButtons = document.querySelectorAll('.faq-button');
+		
+		faqButtons.forEach(button => {
+			button.addEventListener('click', () => {
+				const faqId = button.getAttribute('data-faq-id');
+				const content = document.querySelector(`[data-faq-content="${faqId}"]`);
+				const icon = button.querySelector('.faq-icon');
+				const isExpanded = button.getAttribute('aria-expanded') === 'true';
+				
+				// Close all other FAQs
+				document.querySelectorAll('.faq-button').forEach(btn => {
+					if (btn !== button) {
+						btn.setAttribute('aria-expanded', 'false');
+						const otherIcon = btn.querySelector('.faq-icon');
+						otherIcon?.classList.remove('rotate-180');
+					}
+				});
+				
+				document.querySelectorAll('.faq-answer').forEach(ans => {
+					if (ans !== content) {
+						ans.classList.add('hidden');
+					}
+				});
+				
+				// Toggle current FAQ
+				if (isExpanded) {
+					button.setAttribute('aria-expanded', 'false');
+					content?.classList.add('hidden');
+					icon?.classList.remove('rotate-180');
+				} else {
+					button.setAttribute('aria-expanded', 'true');
+					content?.classList.remove('hidden');
+					icon?.classList.add('rotate-180');
+				}
+			});
+		});
+	});
+</script>

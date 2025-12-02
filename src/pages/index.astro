@@ -4,7 +4,11 @@ import Navbar from '../components/Navbar.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import TeamMember from '../components/TeamMember.astro';
 import ContactInfo from '../components/ContactInfo.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import FAQItem from '../components/FAQItem.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
 import Footer from '../components/Footer.astro';
+import { Icon } from 'astro-icon/components';
 
 const services = [
 	{
@@ -70,7 +74,7 @@ const contactItems = [
 	{
 		icon: 'lucide:mail',
 		title: 'Email',
-		value: 'contacto@cognicore.com'
+		value: 'contacto@cognicode.com'
 	},
 	{
 		icon: 'lucide:phone',
@@ -83,38 +87,97 @@ const contactItems = [
 		value: 'Ciudad de México, México'
 	}
 ];
+
+const testimonials = [
+	{
+		quote: 'CogniCode transformó completamente nuestra infraestructura tecnológica. Su equipo entendió nuestras necesidades y entregó una solución que superó nuestras expectativas.',
+		author: 'Roberto Méndez',
+		role: 'Director de Tecnología',
+		company: 'TechCorp Industries'
+	},
+	{
+		quote: 'La implementación de IA en nuestros procesos ha incrementado nuestra eficiencia en un 40%. El equipo de CogniCode es excepcional.',
+		author: 'Laura Jiménez',
+		role: 'CEO',
+		company: 'InnovateX Solutions'
+	},
+	{
+		quote: 'Profesionalismo, expertise técnico y compromiso con los resultados. CogniCode es nuestro socio tecnológico de confianza.',
+		author: 'Miguel Ángel Torres',
+		role: 'Gerente General',
+		company: 'DataFlow México'
+	}
+];
+
+const faqs = [
+	{
+		id: 'faq-1',
+		question: '¿Cuánto tiempo toma desarrollar un proyecto?',
+		answer: 'El tiempo varía según la complejidad del proyecto. Proyectos pequeños pueden tomar de 4 a 8 semanas, mientras que soluciones empresariales complejas pueden requerir de 3 a 6 meses. Siempre establecemos un cronograma claro en la fase de planificación.'
+	},
+	{
+		id: 'faq-2',
+		question: '¿Ofrecen soporte después de la entrega?',
+		answer: 'Sí, ofrecemos diferentes planes de mantenimiento y soporte continuo. Incluimos garantía en todos nuestros proyectos y planes personalizados de soporte técnico, actualizaciones y mejoras continuas.'
+	},
+	{
+		id: 'faq-3',
+		question: '¿Trabajan con empresas de cualquier tamaño?',
+		answer: 'Absolutamente. Tenemos experiencia trabajando desde startups hasta grandes empresas. Adaptamos nuestros servicios y metodologías al tamaño y necesidades específicas de cada cliente.'
+	},
+	{
+		id: 'faq-4',
+		question: '¿Qué tecnologías utilizan?',
+		answer: 'Utilizamos tecnologías modernas y probadas según las necesidades del proyecto: React, Next.js, Node.js, Python, AWS, Azure, Google Cloud, y más. Siempre seleccionamos el stack tecnológico más adecuado para cada caso.'
+	},
+	{
+		id: 'faq-5',
+		question: '¿Cómo es el proceso de desarrollo?',
+		answer: 'Seguimos metodologías ágiles con sprints de 2 semanas. Mantenemos comunicación constante, demos regulares y entregas incrementales. Esto permite flexibilidad y asegura que el producto final cumpla exactamente con tus expectativas.'
+	}
+];
 ---
 
 <Layout>
-	<main>
+	<main class="min-h-screen">
 		<Navbar />
 
 		<!-- Hero Section -->
-		<section class="hero">
-			<div class="container">
-				<div class="hero-content">
-					<h1 class="brand">
-						Cogni<span class="highlight">Core</span>
+		<section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+			<div class="max-w-7xl mx-auto px-8">
+				<div class="relative z-10 text-center max-w-4xl animate-fade-in-up">
+					<h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 tracking-tight text-dark">
+						Cogni<span class="text-turquoise relative">Code</span>
 					</h1>
-					<p class="tagline">Inteligencia en el núcleo de tu estrategia</p>
-					<p class="description">
+					<p class="text-xl md:text-2xl font-light text-gray-custom mb-8 tracking-wide">
+						Inteligencia en el núcleo de tu estrategia
+					</p>
+					<p class="text-lg text-gray-custom max-w-2xl mx-auto mb-12 leading-relaxed">
 						Transformamos ideas en soluciones tecnológicas inteligentes.
 						Desarrollo de software estratégico para empresas que piensan en el futuro.
 					</p>
-					<div class="cta-group">
-						<a href="#servicios" class="btn btn-primary">Nuestros Servicios</a>
-						<a href="#contacto" class="btn btn-secondary">Contactar</a>
+					<div class="flex gap-4 justify-center flex-wrap">
+						<a href="#servicios" class="group px-8 py-4 text-base font-semibold no-underline rounded-lg transition-all duration-300 bg-turquoise text-white shadow-[0_4px_15px_rgba(6,182,212,0.3)] hover:bg-turquoise-dark hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(6,182,212,0.4)] flex items-center gap-2">
+							<span>Nuestros Servicios</span>
+							<Icon name="lucide:arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+						</a>
+						<a href="#contacto" class="group px-8 py-4 text-base font-semibold no-underline rounded-lg transition-all duration-300 bg-transparent text-dark border-2 border-turquoise hover:bg-turquoise hover:text-white hover:-translate-y-0.5 flex items-center gap-2">
+							<Icon name="lucide:message-circle" class="w-5 h-5" />
+							<span>Contactar</span>
+						</a>
 					</div>
 				</div>
 			</div>
-			<div class="hero-decoration"></div>
+			<div class="absolute -top-[10%] -right-[10%] w-[600px] h-[600px] bg-gradient-to-br from-turquoise-light to-turquoise rounded-full opacity-10 z-0 animate-float"></div>
 		</section>
 
 		<!-- Servicios Section -->
-		<section id="servicios" class="services">
-			<div class="container">
-				<h2 class="section-title">Nuestros Servicios</h2>
-				<div class="services-grid">
+		<section id="servicios" class="py-32 bg-light-gray">
+			<div class="max-w-7xl mx-auto px-8">
+				<h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 text-dark relative after:content-[''] after:block after:w-20 after:h-1 after:bg-turquoise after:mt-4 after:mx-auto after:rounded">
+					Nuestros Servicios
+				</h2>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
 					{services.map(service => (
 						<ServiceCard 
 							icon={service.icon}
@@ -127,50 +190,54 @@ const contactItems = [
 		</section>
 
 		<!-- Clientes Section -->
-		<section id="clientes" class="clients">
-			<div class="container">
-				<h2 class="section-title">Clientes que Confían en Nosotros</h2>
-				<p class="section-subtitle">Empresas líderes que han transformado su visión tecnológica con CogniCore</p>
-				<div class="clients-grid">
-					<div class="client-logo">TechCorp</div>
-					<div class="client-logo">InnovateX</div>
-					<div class="client-logo">DataFlow</div>
-					<div class="client-logo">SmartBiz</div>
-					<div class="client-logo">CloudNet</div>
-					<div class="client-logo">FutureApps</div>
+		<section id="clientes" class="py-24 bg-white">
+			<div class="max-w-7xl mx-auto px-8">
+				<h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 text-dark relative after:content-[''] after:block after:w-20 after:h-1 after:bg-turquoise after:mt-4 after:mx-auto after:rounded">
+					Clientes que Confían en Nosotros
+				</h2>
+				<p class="text-center text-gray-custom text-lg mb-16 max-w-2xl mx-auto">
+					Empresas líderes que han transformado su visión tecnológica con CogniCode
+				</p>
+				<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12 mt-16">
+					<div class="flex items-center justify-center p-8 text-2xl font-semibold text-gray-custom border-2 border-slate-200 rounded-lg transition-all duration-300 hover:border-turquoise hover:text-turquoise hover:scale-105">TechCorp</div>
+					<div class="flex items-center justify-center p-8 text-2xl font-semibold text-gray-custom border-2 border-slate-200 rounded-lg transition-all duration-300 hover:border-turquoise hover:text-turquoise hover:scale-105">InnovateX</div>
+					<div class="flex items-center justify-center p-8 text-2xl font-semibold text-gray-custom border-2 border-slate-200 rounded-lg transition-all duration-300 hover:border-turquoise hover:text-turquoise hover:scale-105">DataFlow</div>
+					<div class="flex items-center justify-center p-8 text-2xl font-semibold text-gray-custom border-2 border-slate-200 rounded-lg transition-all duration-300 hover:border-turquoise hover:text-turquoise hover:scale-105">SmartBiz</div>
+					<div class="flex items-center justify-center p-8 text-2xl font-semibold text-gray-custom border-2 border-slate-200 rounded-lg transition-all duration-300 hover:border-turquoise hover:text-turquoise hover:scale-105">CloudNet</div>
+					<div class="flex items-center justify-center p-8 text-2xl font-semibold text-gray-custom border-2 border-slate-200 rounded-lg transition-all duration-300 hover:border-turquoise hover:text-turquoise hover:scale-105">FutureApps</div>
 				</div>
 			</div>
 		</section>
 
 		<!-- Sobre Nosotros Section -->
-		<section id="nosotros" class="about">
-			<div class="container">
-				<div class="about-content">
-					<div class="about-text">
-						<h2 class="section-title">Sobre Nosotros</h2>
-						<p>
-							En <strong>CogniCore</strong>, fusionamos inteligencia y tecnología para crear soluciones 
-							que transforman negocios. Nuestro equipo de expertos combina pensamiento estratégico 
-							con excelencia técnica.
-						</p>
-						<p>
-							Con años de experiencia en el sector tecnológico, nos especializamos en 
-							identificar el núcleo de los desafíos empresariales y desarrollar soluciones 
-							innovadoras que generan resultados medibles.
-						</p>
-						<div class="stats">
-							<div class="stat-item">
-								<div class="stat-number">50+</div>
-								<div class="stat-label">Proyectos Exitosos</div>
-							</div>
-							<div class="stat-item">
-								<div class="stat-number">30+</div>
-								<div class="stat-label">Clientes Satisfechos</div>
-							</div>
-							<div class="stat-item">
-								<div class="stat-number">98%</div>
-								<div class="stat-label">Tasa de Éxito</div>
-							</div>
+		<section id="nosotros" class="py-32 bg-light-gray">
+			<div class="max-w-7xl mx-auto px-8">
+				<div class="max-w-4xl mx-auto">
+					<h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 text-dark relative after:content-[''] after:block after:w-20 after:h-1 after:bg-turquoise after:mt-4 after:mx-auto after:rounded">
+						Sobre Nosotros
+					</h2>
+					<p class="text-lg leading-relaxed text-gray-custom mb-6 mt-16">
+						En <strong class="text-turquoise">CogniCode</strong>, fusionamos inteligencia y tecnología para crear soluciones 
+						que transforman negocios. Nuestro equipo de expertos combina pensamiento estratégico 
+						con excelencia técnica.
+					</p>
+					<p class="text-lg leading-relaxed text-gray-custom mb-6">
+						Con años de experiencia en el sector tecnológico, nos especializamos en 
+						identificar el núcleo de los desafíos empresariales y desarrollar soluciones 
+						innovadoras que generan resultados medibles.
+					</p>
+					<div class="grid grid-cols-1 md:grid-cols-3 gap-12 mt-16">
+						<div class="text-center">
+							<div class="text-5xl font-bold text-turquoise mb-2">50+</div>
+							<div class="text-gray-custom text-base">Proyectos Exitosos</div>
+						</div>
+						<div class="text-center">
+							<div class="text-5xl font-bold text-turquoise mb-2">30+</div>
+							<div class="text-gray-custom text-base">Clientes Satisfechos</div>
+						</div>
+						<div class="text-center">
+							<div class="text-5xl font-bold text-turquoise mb-2">98%</div>
+							<div class="text-gray-custom text-base">Tasa de Éxito</div>
 						</div>
 					</div>
 				</div>
@@ -178,11 +245,15 @@ const contactItems = [
 		</section>
 
 		<!-- Colaboradores Section -->
-		<section id="colaboradores" class="team">
-			<div class="container">
-				<h2 class="section-title">Nuestro Equipo</h2>
-				<p class="section-subtitle">Profesionales apasionados por la tecnología y la innovación</p>
-				<div class="team-grid">
+		<section id="colaboradores" class="py-32 bg-white">
+			<div class="max-w-7xl mx-auto px-8">
+				<h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 text-dark relative after:content-[''] after:block after:w-20 after:h-1 after:bg-turquoise after:mt-4 after:mx-auto after:rounded">
+					Nuestro Equipo
+				</h2>
+				<p class="text-center text-gray-custom text-lg mb-16 max-w-2xl mx-auto">
+					Profesionales apasionados por la tecnología y la innovación
+				</p>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mt-16">
 					{teamMembers.map(member => (
 						<TeamMember 
 							initials={member.initials}
@@ -195,13 +266,60 @@ const contactItems = [
 			</div>
 		</section>
 
+		<!-- Testimonios Section -->
+		<section id="testimonios" class="py-32 bg-light-gray">
+			<div class="max-w-7xl mx-auto px-8">
+				<h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 text-dark relative after:content-[''] after:block after:w-20 after:h-1 after:bg-turquoise after:mt-4 after:mx-auto after:rounded">
+					Lo Que Dicen Nuestros Clientes
+				</h2>
+				<p class="text-center text-gray-custom text-lg mb-16 max-w-2xl mx-auto">
+					Historias de éxito de quienes confiaron en nosotros
+				</p>
+				<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+					{testimonials.map(testimonial => (
+						<TestimonialCard 
+							quote={testimonial.quote}
+							author={testimonial.author}
+							role={testimonial.role}
+							company={testimonial.company}
+						/>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- FAQ Section -->
+		<section id="faq" class="py-32 bg-white">
+			<div class="max-w-4xl mx-auto px-8">
+				<h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 text-dark relative after:content-[''] after:block after:w-20 after:h-1 after:bg-turquoise after:mt-4 after:mx-auto after:rounded">
+					Preguntas Frecuentes
+				</h2>
+				<p class="text-center text-gray-custom text-lg mb-16 max-w-2xl mx-auto">
+					Respuestas a las dudas más comunes sobre nuestros servicios
+				</p>
+				<div class="space-y-4 mt-16">
+					{faqs.map(faq => (
+						<FAQItem 
+							id={faq.id}
+							question={faq.question}
+							answer={faq.answer}
+						/>
+					))}
+				</div>
+			</div>
+		</section>
+
 		<!-- Contacto Section -->
-		<section id="contacto" class="contact">
-			<div class="container">
-				<h2 class="section-title">Hablemos de tu Proyecto</h2>
-				<p class="section-subtitle">Estamos listos para convertir tu visión en realidad</p>
-				<div class="contact-content">
-					<div class="contact-info">
+		<section id="contacto" class="py-32 bg-light-gray">
+			<div class="max-w-7xl mx-auto px-8">
+				<h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 text-dark relative after:content-[''] after:block after:w-20 after:h-1 after:bg-turquoise after:mt-4 after:mx-auto after:rounded">
+					Hablemos de tu Proyecto
+				</h2>
+				<p class="text-center text-gray-custom text-lg mb-16 max-w-2xl mx-auto">
+					Estamos listos para convertir tu visión en realidad
+				</p>
+				<div class="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-16 mt-16">
+					<div class="flex flex-col gap-8">
 						{contactItems.map(item => (
 							<ContactInfo 
 								icon={item.icon}
@@ -210,69 +328,110 @@ const contactItems = [
 							/>
 						))}
 					</div>
-					<form class="contact-form">
-						<input type="text" placeholder="Nombre completo" required>
-						<input type="email" placeholder="Email" required>
-						<input type="text" placeholder="Empresa">
-						<textarea placeholder="Cuéntanos sobre tu proyecto" rows="5" required></textarea>
-						<button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+					<form id="contact-form" class="flex flex-col gap-6">
+						<div class="relative">
+							<input type="text" name="name" placeholder="Nombre completo" required class="w-full p-4 border-2 border-slate-200 rounded-lg font-sans text-base transition-all focus:outline-none focus:border-turquoise focus:ring-2 focus:ring-turquoise/20">
+						</div>
+						<div class="relative">
+							<input type="email" name="email" placeholder="Email" required class="w-full p-4 border-2 border-slate-200 rounded-lg font-sans text-base transition-all focus:outline-none focus:border-turquoise focus:ring-2 focus:ring-turquoise/20">
+						</div>
+						<div class="relative">
+							<input type="text" name="company" placeholder="Empresa" class="w-full p-4 border-2 border-slate-200 rounded-lg font-sans text-base transition-all focus:outline-none focus:border-turquoise focus:ring-2 focus:ring-turquoise/20">
+						</div>
+						<div class="relative">
+							<textarea name="message" placeholder="Cuéntanos sobre tu proyecto" rows="5" required class="w-full p-4 border-2 border-slate-200 rounded-lg font-sans text-base transition-all focus:outline-none focus:border-turquoise focus:ring-2 focus:ring-turquoise/20 resize-none"></textarea>
+						</div>
+						<button type="submit" class="group w-fit px-8 py-4 text-base font-semibold rounded-lg transition-all duration-300 bg-turquoise text-white shadow-[0_4px_15px_rgba(6,182,212,0.3)] hover:bg-turquoise-dark hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(6,182,212,0.4)] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2">
+							<span>Enviar Mensaje</span>
+							<Icon name="lucide:send" class="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+						</button>
+						<div id="form-message" class="hidden p-4 rounded-lg text-center font-medium"></div>
 					</form>
 				</div>
 			</div>
 		</section>
 
 		<Footer />
+		
+		<!-- WhatsApp Floating Button -->
+		<WhatsAppButton phoneNumber="51902415972" message="Hola CogniCode, me gustaría saber más sobre sus servicios" />
 	</main>
 </Layout>
 
+<script>
+	// Scroll reveal animations
+	const observerOptions = {
+		threshold: 0.1,
+		rootMargin: '0px 0px -50px 0px'
+	};
+
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('animate-fade-in-up');
+				observer.unobserve(entry.target);
+			}
+		});
+	}, observerOptions);
+
+	// Observe all sections
+	document.addEventListener('DOMContentLoaded', () => {
+		const sections = document.querySelectorAll('section');
+		sections.forEach(section => {
+			section.style.opacity = '0';
+			observer.observe(section);
+		});
+
+		// Add scroll-based navbar background
+		const navbar = document.querySelector('nav');
+		window.addEventListener('scroll', () => {
+			if (window.scrollY > 100) {
+				navbar?.classList.add('shadow-lg');
+			} else {
+				navbar?.classList.remove('shadow-lg');
+			}
+		});
+
+		// Contact form handling
+		const contactForm = document.getElementById('contact-form') as HTMLFormElement;
+		const formMessage = document.getElementById('form-message');
+
+		contactForm?.addEventListener('submit', async (e) => {
+			e.preventDefault();
+			
+			const submitButton = contactForm.querySelector('button[type="submit"]') as HTMLButtonElement;
+			const originalText = submitButton.innerHTML;
+			
+			// Disable button and show loading
+			submitButton.disabled = true;
+			submitButton.innerHTML = '<span>Enviando...</span>';
+			
+			// Simulate form submission (replace with actual API call)
+			setTimeout(() => {
+				// Show success message
+				if (formMessage) {
+					formMessage.classList.remove('hidden', 'bg-red-100', 'text-red-700');
+					formMessage.classList.add('bg-green-100', 'text-green-700');
+					formMessage.textContent = '¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.';
+				}
+				
+				// Reset form
+				contactForm.reset();
+				
+				// Re-enable button
+				submitButton.disabled = false;
+				submitButton.innerHTML = originalText;
+				
+				// Hide message after 5 seconds
+				setTimeout(() => {
+					formMessage?.classList.add('hidden');
+				}, 5000);
+			}, 1500);
+		});
+	});
+</script>
+
 <style>
-	main {
-		min-height: 100vh;
-	}
-
-	.container {
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 0 2rem;
-	}
-
-	/* Hero Section */
-	.hero {
-		min-height: 100vh;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		position: relative;
-		overflow: hidden;
-		padding-top: 80px;
-	}
-
-	.hero-decoration {
-		position: absolute;
-		top: -10%;
-		right: -10%;
-		width: 600px;
-		height: 600px;
-		background: linear-gradient(135deg, var(--turquoise-light) 0%, var(--turquoise) 100%);
-		border-radius: 50%;
-		opacity: 0.1;
-		z-index: 0;
-		animation: float 8s ease-in-out infinite;
-	}
-
-	@keyframes float {
-		0%, 100% { transform: translate(0, 0) scale(1); }
-		50% { transform: translate(-20px, 20px) scale(1.05); }
-	}
-
-	.hero-content {
-		position: relative;
-		z-index: 1;
-		text-align: center;
-		max-width: 800px;
-		animation: fadeInUp 1s ease-out;
-	}
-
 	@keyframes fadeInUp {
 		from {
 			opacity: 0;
@@ -284,267 +443,7 @@ const contactItems = [
 		}
 	}
 
-	.brand {
-		font-size: clamp(3rem, 8vw, 5rem);
-		font-weight: 700;
-		margin-bottom: 1rem;
-		letter-spacing: -0.02em;
-		color: var(--dark);
-	}
-
-	.highlight {
-		color: var(--turquoise);
-		position: relative;
-	}
-
-	.tagline {
-		font-size: clamp(1.2rem, 3vw, 1.5rem);
-		font-weight: 300;
-		color: var(--gray);
-		margin-bottom: 2rem;
-		letter-spacing: 0.02em;
-	}
-
-	.description {
-		font-size: 1.1rem;
-		color: var(--gray);
-		max-width: 600px;
-		margin: 0 auto 3rem;
-		line-height: 1.8;
-	}
-
-	.cta-group {
-		display: flex;
-		gap: 1rem;
-		justify-content: center;
-		flex-wrap: wrap;
-	}
-
-	.btn {
-		padding: 1rem 2rem;
-		font-size: 1rem;
-		font-weight: 600;
-		text-decoration: none;
-		border-radius: 8px;
-		transition: all 0.3s ease;
-		display: inline-block;
-	}
-
-	.btn-primary {
-		background: var(--turquoise);
-		color: white;
-		box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
-	}
-
-	.btn-primary:hover {
-		background: var(--turquoise-dark);
-		transform: translateY(-2px);
-		box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
-	}
-
-	.btn-secondary {
-		background: transparent;
-		color: var(--dark);
-		border: 2px solid var(--turquoise);
-	}
-
-	.btn-secondary:hover {
-		background: var(--turquoise);
-		color: white;
-		transform: translateY(-2px);
-	}
-
-	/* Services Section */
-	.services {
-		padding: 8rem 0;
-		background: var(--light-gray);
-	}
-
-	.section-title {
-		font-size: clamp(2.5rem, 5vw, 3.5rem);
-		font-weight: 700;
-		text-align: center;
-		margin-bottom: 1rem;
-		color: var(--dark);
-		position: relative;
-	}
-
-	.section-title::after {
-		content: '';
-		display: block;
-		width: 80px;
-		height: 4px;
-		background: var(--turquoise);
-		margin: 1rem auto 0;
-		border-radius: 2px;
-	}
-
-	.section-subtitle {
-		text-align: center;
-		color: var(--gray);
-		font-size: 1.1rem;
-		margin-bottom: 4rem;
-		max-width: 600px;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	.services-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-		gap: 2rem;
-	}
-
-	/* Clientes Section */
-	.clients {
-		padding: 6rem 0;
-		background: white;
-	}
-
-	.clients-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-		gap: 3rem;
-		margin-top: 4rem;
-	}
-
-	.client-logo {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 2rem;
-		font-size: 1.5rem;
-		font-weight: 600;
-		color: var(--gray);
-		border: 2px solid #e2e8f0;
-		border-radius: 8px;
-		transition: all 0.3s ease;
-	}
-
-	.client-logo:hover {
-		border-color: var(--turquoise);
-		color: var(--turquoise);
-		transform: scale(1.05);
-	}
-
-	/* About Section */
-	.about {
-		padding: 8rem 0;
-		background: var(--light-gray);
-	}
-
-	.about-content {
-		max-width: 900px;
-		margin: 0 auto;
-	}
-
-	.about-text p {
-		font-size: 1.1rem;
-		line-height: 1.8;
-		color: var(--gray);
-		margin-bottom: 1.5rem;
-	}
-
-	.about-text strong {
-		color: var(--turquoise);
-	}
-
-	.stats {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-		gap: 3rem;
-		margin-top: 4rem;
-	}
-
-	.stat-item {
-		text-align: center;
-	}
-
-	.stat-number {
-		font-size: 3rem;
-		font-weight: 700;
-		color: var(--turquoise);
-		margin-bottom: 0.5rem;
-	}
-
-	.stat-label {
-		color: var(--gray);
-		font-size: 1rem;
-	}
-
-	/* Team Section */
-	.team {
-		padding: 8rem 0;
-		background: white;
-	}
-
-	.team-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		gap: 3rem;
-		margin-top: 4rem;
-	}
-
-	/* Contact Section */
-	.contact {
-		padding: 8rem 0;
-		background: var(--light-gray);
-	}
-
-	.contact-content {
-		display: grid;
-		grid-template-columns: 1fr 1.5fr;
-		gap: 4rem;
-		margin-top: 4rem;
-	}
-
-	.contact-info {
-		display: flex;
-		flex-direction: column;
-		gap: 2rem;
-	}
-
-	.contact-form {
-		display: flex;
-		flex-direction: column;
-		gap: 1.5rem;
-	}
-
-	.contact-form input,
-	.contact-form textarea {
-		padding: 1rem;
-		border: 2px solid #e2e8f0;
-		border-radius: 8px;
-		font-family: inherit;
-		font-size: 1rem;
-		transition: border-color 0.3s ease;
-	}
-
-	.contact-form input:focus,
-	.contact-form textarea:focus {
-		outline: none;
-		border-color: var(--turquoise);
-	}
-
-	.contact-form button {
-		width: fit-content;
-	}
-
-	/* Responsive */
-	@media (max-width: 1024px) {
-		.contact-content {
-			grid-template-columns: 1fr;
-		}
-	}
-
-	@media (max-width: 768px) {
-		.hero-decoration {
-			width: 400px;
-			height: 400px;
-		}
-
-		.stats {
-			gap: 2rem;
-		}
+	.animate-fade-in-up {
+		animation: fadeInUp 0.8s ease-out forwards;
 	}
 </style>

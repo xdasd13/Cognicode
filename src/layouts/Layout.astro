@@ -1,3 +1,7 @@
+---
+import '../styles/app.css';
+---
+
 <!doctype html>
 <html lang="es">
 	<head>
@@ -8,38 +12,9 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-		<title>CogniCore - Soluciones Inteligentes</title>
+		<title>CogniCode - Soluciones Inteligentes</title>
 	</head>
 	<body>
 		<slot />
 	</body>
 </html>
-
-<style is:global>
-	:root {
-		--turquoise: #06b6d4;
-		--turquoise-light: #22d3ee;
-		--turquoise-dark: #0891b2;
-		--dark: #0f172a;
-		--gray: #64748b;
-		--light-gray: #f1f5f9;
-	}
-
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
-
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-		font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-		background-color: #ffffff;
-		color: var(--dark);
-		line-height: 1.6;
-		-webkit-font-smoothing: antialiased;
-	}
-</style>

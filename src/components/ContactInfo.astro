@@ -10,42 +10,12 @@ interface Props {
 const { icon, title, value } = Astro.props;
 ---
 
-<div class="info-item">
-	<div class="info-icon">
-		<Icon name={icon} />
+<div class="flex gap-6 items-start">
+	<div class="w-14 h-14 text-turquoise flex-shrink-0">
+		<Icon name={icon} class="w-full h-full" />
 	</div>
 	<div>
-		<h4>{title}</h4>
-		<p>{value}</p>
+		<h4 class="text-dark mb-2 text-lg">{title}</h4>
+		<p class="text-gray-custom">{value}</p>
 	</div>
 </div>
-
-<style>
-	.info-item {
-		display: flex;
-		gap: 1.5rem;
-		align-items: flex-start;
-	}
-
-	.info-icon {
-		width: 56px;
-		height: 56px;
-		color: var(--turquoise);
-		flex-shrink: 0;
-	}
-
-	.info-icon :global(svg) {
-		width: 100%;
-		height: 100%;
-	}
-
-	.info-item h4 {
-		color: var(--dark);
-		margin-bottom: 0.5rem;
-		font-size: 1.1rem;
-	}
-
-	.info-item p {
-		color: var(--gray);
-	}
-</style>

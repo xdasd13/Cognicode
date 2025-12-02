@@ -2,90 +2,78 @@
 // Navbar Component
 ---
 
-<nav class="navbar">
-	<div class="container">
-		<div class="nav-content">
-			<a href="/" class="nav-brand">Cogni<span class="highlight">Core</span></a>
-			<ul class="nav-links">
-				<li><a href="#servicios">Servicios</a></li>
-				<li><a href="#clientes">Clientes</a></li>
-				<li><a href="#nosotros">Nosotros</a></li>
-				<li><a href="#colaboradores">Colaboradores</a></li>
-				<li><a href="#contacto" class="nav-cta">Contacto</a></li>
+<nav class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md z-50 border-b border-turquoise/10 transition-all duration-300">
+	<div class="max-w-7xl mx-auto px-8">
+		<div class="flex justify-between items-center py-4">
+			<a href="/" class="text-2xl font-bold text-dark no-underline hover:scale-105 transition-transform">
+				Cogni<span class="text-turquoise">Code</span>
+			</a>
+			
+			<!-- Desktop Menu -->
+			<ul class="hidden md:flex list-none gap-8 items-center">
+				<li><a href="#servicios" class="no-underline text-gray-custom font-medium hover:text-turquoise transition-colors">Servicios</a></li>
+				<li><a href="#clientes" class="no-underline text-gray-custom font-medium hover:text-turquoise transition-colors">Clientes</a></li>
+				<li><a href="#nosotros" class="no-underline text-gray-custom font-medium hover:text-turquoise transition-colors">Nosotros</a></li>
+				<li><a href="#colaboradores" class="no-underline text-gray-custom font-medium hover:text-turquoise transition-colors">Colaboradores</a></li>
+				<li><a href="#contacto" class="px-6 py-2 bg-turquoise text-white rounded-md hover:bg-turquoise-dark hover:scale-105 transition-all no-underline font-medium">Contacto</a></li>
+			</ul>
+
+			<!-- Mobile Menu Button -->
+			<button id="mobile-menu-btn" class="md:hidden p-2 text-gray-custom hover:text-turquoise transition-colors" aria-label="Abrir menú">
+				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+					<path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+				</svg>
+			</button>
+		</div>
+
+		<!-- Mobile Menu -->
+		<div id="mobile-menu" class="hidden md:hidden pb-4">
+			<ul class="flex flex-col gap-4">
+				<li><a href="#servicios" class="block py-2 no-underline text-gray-custom font-medium hover:text-turquoise transition-colors">Servicios</a></li>
+				<li><a href="#clientes" class="block py-2 no-underline text-gray-custom font-medium hover:text-turquoise transition-colors">Clientes</a></li>
+				<li><a href="#nosotros" class="block py-2 no-underline text-gray-custom font-medium hover:text-turquoise transition-colors">Nosotros</a></li>
+				<li><a href="#colaboradores" class="block py-2 no-underline text-gray-custom font-medium hover:text-turquoise transition-colors">Colaboradores</a></li>
+				<li><a href="#contacto" class="block px-6 py-2 bg-turquoise text-white rounded-md hover:bg-turquoise-dark transition-colors no-underline font-medium text-center">Contacto</a></li>
 			</ul>
 		</div>
 	</div>
 </nav>
 
-<style>
-	.navbar {
-		position: fixed;
-		top: 0;
-		left: 0;
-		right: 0;
-		background: rgba(255, 255, 255, 0.95);
-		backdrop-filter: blur(10px);
-		z-index: 1000;
-		border-bottom: 1px solid rgba(6, 182, 212, 0.1);
-		transition: all 0.3s ease;
-	}
+<script>
+	// Mobile menu toggle
+	const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+	const mobileMenu = document.getElementById('mobile-menu');
+	const menuIcon = document.getElementById('menu-icon');
+	const closeIcon = document.getElementById('close-icon');
 
-	.container {
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 0 2rem;
-	}
+	mobileMenuBtn?.addEventListener('click', () => {
+		mobileMenu?.classList.toggle('hidden');
+		menuIcon?.classList.toggle('hidden');
+		closeIcon?.classList.toggle('hidden');
+	});
 
-	.nav-content {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 1rem 0;
-	}
+	// Close mobile menu when clicking on a link
+	const mobileLinks = mobileMenu?.querySelectorAll('a');
+	mobileLinks?.forEach(link => {
+		link.addEventListener('click', () => {
+			mobileMenu?.classList.add('hidden');
+			menuIcon?.classList.remove('hidden');
+			closeIcon?.classList.add('hidden');
+		});
+	});
 
-	.nav-brand {
-		font-size: 1.5rem;
-		font-weight: 700;
-		text-decoration: none;
-		color: var(--dark);
-	}
-
-	.highlight {
-		color: var(--turquoise);
-	}
-
-	.nav-links {
-		display: flex;
-		list-style: none;
-		gap: 2rem;
-		align-items: center;
-	}
-
-	.nav-links a {
-		text-decoration: none;
-		color: var(--gray);
-		font-weight: 500;
-		transition: color 0.3s ease;
-	}
-
-	.nav-links a:hover {
-		color: var(--turquoise);
-	}
-
-	.nav-cta {
-		padding: 0.5rem 1.5rem;
-		background: var(--turquoise);
-		color: white !important;
-		border-radius: 6px;
-	}
-
-	.nav-cta:hover {
-		background: var(--turquoise-dark);
-	}
-
-	@media (max-width: 768px) {
-		.nav-links {
-			display: none;
-		}
-	}
-</style>
+	// Smooth scroll for all navigation links
+	document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+		anchor.addEventListener('click', function (e) {
+			e.preventDefault();
+			const target = document.querySelector(this.getAttribute('href') || '');
+			if (target) {
+				target.scrollIntoView({
+					behavior: 'smooth',
+					block: 'start'
+				});
+			}
+		});
+	});
+</script>
