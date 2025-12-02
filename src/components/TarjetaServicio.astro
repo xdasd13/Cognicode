@@ -1,12 +1,15 @@
 ---
+import { ModalServicio } from './ModalServicio';
+
 interface Props {
 	titulo: string;
 	descripcion: string;
 	costoAprox: string;
 	icono: 'ShoppingCart' | 'Globe' | 'Zap' | 'Package';
+	id?: number;
 }
 
-const { titulo, descripcion, costoAprox, icono } = Astro.props;
+const { titulo, descripcion, costoAprox, icono, id = 1 } = Astro.props;
 
 // Mapeo de GIFs desde public/gif
 const gifMap = {
@@ -17,6 +20,14 @@ const gifMap = {
 };
 
 const gifPath = gifMap[icono];
+
+const servicio = {
+	id,
+	titulo,
+	descripcion,
+	costoAprox,
+	icono
+};
 ---
 
 <article class="tarjeta-servicio">
@@ -43,7 +54,7 @@ const gifPath = gifMap[icono];
 	</div>
 
 	<div class="botones">
-		<button class="btn btn-secundario">Más información</button>
+		<ModalServicio client:load servicio={servicio} />
 		<button class="btn btn-primario">Consultar</button>
 	</div>
 </article>
@@ -184,7 +195,7 @@ const gifPath = gifMap[icono];
 		gap: 12px;
 	}
 
-	.btn {
+	.botones :global(.btn) {
 		flex: 1;
 		padding: 11px 16px;
 		border: none;
@@ -195,6 +206,9 @@ const gifPath = gifMap[icono];
 		transition: all 0.2s ease;
 		letter-spacing: 0.3px;
 		font-family: inherit;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
 	.btn-primario {
