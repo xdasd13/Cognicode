@@ -1,0 +1,310 @@
+---
+import { ModalServicio } from './ModalServicio';
+
+interface Props {
+	titulo: string;
+	descripcion: string;
+	costoAprox: string;
+	icono: 'ShoppingCart' | 'Globe' | 'Zap' | 'Package';
+	id?: number;
+}
+
+const { titulo, descripcion, costoAprox, icono, id = 1 } = Astro.props;
+
+// Mapeo de GIFs desde public/gif
+const gifMap = {
+	ShoppingCart: '/gif/compras-online.gif',
+	Globe: '/gif/dominio.gif',
+	Zap: '/gif/app-web.gif',
+	Package: '/gif/inventario.gif'
+};
+
+const gifPath = gifMap[icono];
+
+const servicio = {
+	id,
+	titulo,
+	descripcion,
+	costoAprox,
+	icono
+};
+---
+
+<article class="tarjeta-servicio">
+	<div class="encabezado-servicio">
+		<div class="icono-contenedor">
+			<div class="icono-fondo" />
+			<img src={gifPath} alt={titulo} class="icono-gif" />
+		</div>
+
+		<div class="encabezado-texto">
+			<h3 class="titulo">{titulo}</h3>
+		</div>
+	</div>
+
+	<div class="contenido-principal">
+		<p class="descripcion">{descripcion}</p>
+	</div>
+
+	<div class="divisor" />
+
+	<div class="bloque-precio">
+		<span class="etiqueta-precio">COSTO APROXIMADO</span>
+		<span class="valor-precio">{costoAprox}</span>
+	</div>
+
+	<div class="botones">
+		<ModalServicio client:load servicio={servicio} />
+		<button class="btn btn-primario">Consultar</button>
+	</div>
+</article>
+
+<style>
+	.tarjeta-servicio {
+		display: flex;
+		flex-direction: column;
+		background: #ffffff;
+		border: 1px solid #ebebeb;
+		border-radius: 14px;
+		padding: 24px;
+		transition: all 0.3s ease;
+		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05), 0 4px 24px rgba(10, 132, 255, 0.06);
+		height: 100%;
+		position: relative;
+		overflow: hidden;
+	}
+
+	/* Efecto hover */
+	.tarjeta-servicio:hover {
+		transform: translateY(-4px);
+		border-color: #0a84ff;
+		box-shadow: 0 8px 24px rgba(10, 132, 255, 0.14), 0 12px 40px rgba(0, 0, 0, 0.08);
+	}
+
+	.encabezado-servicio {
+		display: flex;
+		gap: 16px;
+		align-items: flex-start;
+		margin-bottom: 20px;
+	}
+
+	.encabezado-texto {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+	}
+
+	/* Contenedor del icono con fondo degradado sutil */
+	.icono-contenedor {
+		position: relative;
+		flex-shrink: 0;
+		width: 100px;
+		height: 100px;
+	}
+
+	.icono-fondo {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(135deg, rgba(10, 132, 255, 0.12) 0%, rgba(30, 124, 232, 0.08) 100%);
+		border-radius: 12px;
+		z-index: 1;
+	}
+
+	.icono-gif {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		object-position: center;
+		z-index: 2;
+		padding: 8px;
+	}
+
+	.icono-wrapper {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #0a84ff;
+		font-size: 0;
+		z-index: 2;
+	}
+
+	.icono-wrapper :global(svg) {
+		width: 48px;
+		height: 48px;
+		stroke: currentColor;
+	}
+
+	.contenido-principal {
+		margin-bottom: 24px;
+		flex-grow: 1;
+	}
+
+	.titulo {
+		margin: 0;
+		font-size: 30px;
+		font-weight: 700;
+		color: #1a1a1a;
+		line-height: 1.25;
+		letter-spacing: -0.3px;
+	}
+
+	.descripcion {
+        margin: 0;
+		font-size: 18px;
+		line-height: 1.4;
+		color: #626366;
+	}
+
+	.divisor {
+		height: 1px;
+		background: linear-gradient(90deg, transparent, #e8e8e8, transparent);
+		margin: 20px 0;
+	}
+
+	.bloque-precio {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+		margin-bottom: 24px;
+	}
+
+	.etiqueta-precio {
+		font-size: 0.75rem;
+		font-weight: 700;
+		color: #90919a;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+	}
+
+	.valor-precio {
+		font-size: 1.2rem;
+		font-weight: 700;
+		background: linear-gradient(135deg, #0a84ff 0%, #1e7ce8 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.botones {
+		display: flex;
+		gap: 12px;
+	}
+
+	.botones :global(.btn) {
+		flex: 1;
+		padding: 11px 16px;
+		border: none;
+		border-radius: 10px;
+		font-size: 0.95rem;
+		font-weight: 700;
+		cursor: pointer;
+		transition: all 0.2s ease;
+		letter-spacing: 0.3px;
+		font-family: inherit;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.btn-primario {
+		background: linear-gradient(135deg, #0a84ff 0%, #1e7ce8 100%);
+		color: white;
+		border: none;
+		box-shadow: 0 4px 16px rgba(10, 132, 255, 0.3);
+	}
+
+	.btn-primario:hover {
+		transform: translateY(-1px);
+		box-shadow: 0 8px 24px rgba(10, 132, 255, 0.4);
+	}
+
+	.btn-primario:active {
+		transform: translateY(0);
+		box-shadow: 0 2px 8px rgba(10, 132, 255, 0.3);
+	}
+
+	.btn-secundario {
+		background: transparent;
+		color: #0a84ff;
+		border: 1.5px solid #d8d8d8;
+		transition: all 0.2s ease;
+	}
+
+	.btn-secundario:hover {
+		border-color: #0a84ff;
+		background: #f8f9fa;
+		color: #0a84ff;
+		box-shadow: 0 4px 12px rgba(10, 132, 255, 0.12);
+	}
+
+	.btn-secundario:active {
+		transform: translateY(0);
+	}
+
+	@media (max-width: 768px) {
+		.tarjeta-servicio {
+			padding: 20px;
+		}
+
+		.encabezado-servicio {
+			gap: 12px;
+		}
+
+		.titulo {
+			font-size: 1.15rem;
+		}
+
+		.descripcion {
+			font-size: 0.85rem;
+		}
+
+		.icono-contenedor {
+			width: 80px;
+			height: 80px;
+		}
+
+		.btn {
+			padding: 10px 14px;
+			font-size: 0.9rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.tarjeta-servicio {
+			padding: 16px;
+		}
+
+		.encabezado-servicio {
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			margin-bottom: 16px;
+		}
+
+		.icono-contenedor {
+			width: 70px;
+			height: 70px;
+		}
+
+		.titulo {
+			font-size: 1.1rem;
+		}
+
+		.descripcion {
+			font-size: 0.8rem;
+		}
+
+		.botones {
+			flex-direction: column;
+		}
+
+		.btn {
+			width: 100%;
+		}
+	}
+</style>

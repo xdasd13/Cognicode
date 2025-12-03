@@ -10,15 +10,25 @@ import FAQItem from '../components/FAQItem.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import Footer from '../components/Footer.astro';
 import { Icon } from 'astro-icon/components';
+import TarjetaServicio from '../components/TarjetaServicio.astro';
+import { servicios } from '../data/servicios.js';
 import { services, teamMembers, contactItems, testimonials, faqs, clients, stats } from '../data/content';
+
+const clientSlides = [...clients, ...clients, ...clients];
 ---
 
 <Layout>
+	<Fragment slot="head">
+		<link rel="stylesheet" href="/assets/css/home.css" />
+		<link rel="stylesheet" href="/assets/css/services.css" />
+		<link rel="stylesheet" href="/assets/css/service-card.css" />
+		<link rel="stylesheet" href="/assets/css/Contacto.css" />
+	</Fragment>
 	<main class="min-h-screen">
 		<Navbar />
 
 		<!-- Hero Section -->
-		<section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+		<section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20" data-reveal>
 			<div class="max-w-7xl mx-auto px-8">
 				<div class="relative z-10 text-center max-w-4xl animate-fade-in-up">
 					<h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-4 tracking-tight text-dark">
@@ -47,27 +57,55 @@ import { services, teamMembers, contactItems, testimonials, faqs, clients, stats
 		</section>
 
 		<!-- Servicios Section -->
-		<Section id="servicios" title="Nuestros Servicios" bgColor="gray">
-			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-				{services.map(service => (
-					<ServiceCard {...service} />
+		<section id="servicios" class="services-page" data-reveal>
+			<header class="services-header">
+				<div class="services-badge">Nuestros Servicios</div>
+				<h2 class="services-title">Soluciones de Software Profesionales</h2>
+				<p class="services-subtitle">
+					Diseñadas para impulsar el crecimiento de tu negocio con tecnología moderna y resultados medibles.
+				</p>
+			</header>
+			<div class="services-grid">
+				{servicios.map((servicio) => (
+					<TarjetaServicio
+						id={servicio.id}
+						titulo={servicio.titulo}
+						descripcion={servicio.descripcion}
+						costoAprox={servicio.costoAprox}
+						icono={servicio.icono as "ShoppingCart" | "Globe" | "Zap" | "Package"}
+					/>
 				))}
 			</div>
-		</Section>
+			<section class="services-cta">
+				<div class="services-cta-content">
+					<h3>¿Listo para transformar tu negocio?</h3>
+					<p>Contáctanos hoy y descubre cómo podemos ayudarte a alcanzar tus objetivos.</p>
+					<a
+						href="https://wa.me/51939836897?text=Hola%20quiero%20más%20info%20sobre%20el%20servicio"
+						target="_blank"
+						class="btn-cta inline-flex items-center px-5 py-3 bg-green-500 text-white font-medium rounded-lg hover:bg-green-600 transition"
+					>
+						Consultar via WhatsApp
+					</a>
+				</div>
+			</section>
+		</section>
 
 		<!-- Clientes Section -->
-		<Section id="clientes" title="Clientes que Confían en Nosotros" subtitle="Empresas líderes que han transformado su visión tecnológica con CogniCode">
-			<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-12">
-				{clients.map(client => (
-					<div class="flex items-center justify-center p-8 text-2xl font-semibold text-gray-custom border-2 border-slate-200 rounded-lg transition-all duration-300 hover:border-turquoise hover:text-turquoise hover:scale-105">
-						{client}
-					</div>
+		<Section id="clientes" title="Clientes que Confían en Nosotros" subtitle="Empresas líderes que han transformado su visión tecnológica con CogniCode" reveal>
+			<swiper-container id="clients-swiper" init="false" class="clients-swiper" data-reveal>
+				{clientSlides.map((client, index) => (
+					<swiper-slide class="client-slide">
+						<div class="client-chip">
+							{client}
+						</div>
+					</swiper-slide>
 				))}
-			</div>
+			</swiper-container>
 		</Section>
 
 		<!-- Sobre Nosotros Section -->
-		<Section id="nosotros" title="Sobre Nosotros" bgColor="gray">
+		<Section id="nosotros" title="Sobre Nosotros" bgColor="gray" reveal>
 			<div class="max-w-4xl mx-auto">
 				<p class="text-lg leading-relaxed text-gray-custom mb-6">
 					En <strong class="text-turquoise">CogniCode</strong>, fusionamos inteligencia y tecnología para crear soluciones 
@@ -90,7 +128,7 @@ import { services, teamMembers, contactItems, testimonials, faqs, clients, stats
 		</Section>
 
 		<!-- Colaboradores Section -->
-		<Section id="colaboradores" title="Nuestro Equipo" subtitle="Profesionales apasionados por la tecnología y la innovación">
+		<Section id="colaboradores" title="Nuestro Equipo" subtitle="Profesionales apasionados por la tecnología y la innovación" reveal>
 			<div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-12">
 				{teamMembers.map(member => (
 					<TeamMember {...member} />
@@ -99,7 +137,7 @@ import { services, teamMembers, contactItems, testimonials, faqs, clients, stats
 		</Section>
 
 		<!-- Testimonios Section -->
-		<Section id="testimonios" title="Lo Que Dicen Nuestros Clientes" subtitle="Historias de éxito de quienes confiaron en nosotros" bgColor="gray">
+		<Section id="testimonios" title="Lo Que Dicen Nuestros Clientes" subtitle="Historias de éxito de quienes confiaron en nosotros" bgColor="gray" reveal>
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 				{testimonials.map(testimonial => (
 					<TestimonialCard {...testimonial} />
@@ -108,7 +146,7 @@ import { services, teamMembers, contactItems, testimonials, faqs, clients, stats
 		</Section>
 
 		<!-- FAQ Section -->
-		<section id="faq" class="py-32 bg-white">
+		<section id="faq" class="py-32 bg-white" data-reveal>
 			<div class="max-w-4xl mx-auto px-8">
 				<h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 text-dark relative after:content-[''] after:block after:w-20 after:h-1 after:bg-turquoise after:mt-4 after:mx-auto after:rounded">
 					Preguntas Frecuentes
@@ -125,40 +163,86 @@ import { services, teamMembers, contactItems, testimonials, faqs, clients, stats
 		</section>
 
 		<!-- Contacto Section -->
-		<section id="contacto" class="py-32 bg-light-gray">
-			<div class="max-w-7xl mx-auto px-8">
-				<h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 text-dark relative after:content-[''] after:block after:w-20 after:h-1 after:bg-turquoise after:mt-4 after:mx-auto after:rounded">
-					Hablemos de tu Proyecto
-				</h2>
-				<p class="text-center text-gray-custom text-lg mb-16 max-w-2xl mx-auto">
-					Estamos listos para convertir tu visión en realidad
-				</p>
-				<div class="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-16 mt-16">
-					<div class="flex flex-col gap-8">
-						{contactItems.map(item => (
-							<ContactInfo {...item} />
-						))}
+		<section id="contacto" class="contacto-section" data-reveal>
+			<div class="max-w-7xl mx-auto px-8 contacto-wrapper" data-reveal>
+				<div class="contacto-hero">
+					<span class="hero-pill">Conversemos</span>
+					<h2>Hablemos de tu Proyecto</h2>
+					<p class="hero-copy">
+						Cuéntanos qué necesitas construir y diseñaremos un plan a la medida. Respondemos en menos de 24 horas.
+					</p>
+				</div>
+				<div class="contacto-grid">
+					<div class="contacto-info">
+						<h2>¿Por qué agendar una llamada?</h2>
+						<ul>
+							<li>
+								<span class="title">Discovery express</span>
+								<span class="copy">Validamos objetivos, alcance y tiempos en una sola sesión.</span>
+							</li>
+							<li>
+								<span class="title">Equipo senior</span>
+								<span class="copy">Especialistas en productos digitales, integraciones y automatización.</span>
+							</li>
+							<li>
+								<span class="title">Presupuesto claro</span>
+								<span class="copy">Entregamos estimaciones y roadmap con hitos verificables.</span>
+							</li>
+						</ul>
+						<div class="cta-card">
+							<div class="cta-content">
+								<p class="cta-title">¿Prefieres WhatsApp?</p>
+								<a
+									href="https://wa.me/51939836897?text=Hola%20Cognicode,%20quiero%20hablar%20sobre%20un%20nuevo%20proyecto"
+									target="_blank"
+									class="cta-button"
+								>
+									Escribir ahora
+								</a>
+							</div>
+							<div class="cta-illustration" aria-hidden="true">
+								<img
+									src="https://blush.design/api/download?shareUri=Nl5lZrp86&c=Clothing_0%7Effc81a&w=800&h=800&fm=png"
+									alt="Ilustración decorativa de persona sentada"
+									loading="lazy"
+								/>
+							</div>
+						</div>
 					</div>
-					<form action="https://api.web3forms.com/submit" method="POST" id="contact-form" class="flex flex-col gap-6">
-						<input type="hidden" name="access_key" value="8dc97aae-bd7d-4fef-be4b-c8e96cd7c6d6">
-						<input type="hidden" name="subject" value="Nuevo mensaje de contacto desde CogniCode">
-						<input type="hidden" name="from_name" value="Formulario CogniCode">
-						
-						<div class="relative">
-							<input type="text" name="name" placeholder="Nombre completo" required class="w-full p-4 border-2 border-slate-200 rounded-lg font-sans text-base transition-all focus:outline-none focus:border-turquoise focus:ring-2 focus:ring-turquoise/20">
+					<form
+						action="https://api.web3forms.com/submit"
+						method="POST"
+						id="contact-form"
+						class="contact-form"
+					>
+						<input type="hidden" name="access_key" value="8dc97aae-bd7d-4fef-be4b-c8e96cd7c6d6" />
+						<input type="hidden" name="subject" value="Nuevo mensaje de contacto desde CogniCode" />
+						<input type="hidden" name="from_name" value="Formulario CogniCode" />
+
+						<div class="form-row">
+							<label class="field">
+								<span>Nombre completo</span>
+								<input type="text" name="name" placeholder="María López" required />
+							</label>
+							<label class="field">
+								<span>Correo de contacto</span>
+								<input type="email" name="email" placeholder="hola@empresa.com" required />
+							</label>
 						</div>
-						<div class="relative">
-							<input type="email" name="email" placeholder="Email" required class="w-full p-4 border-2 border-slate-200 rounded-lg font-sans text-base transition-all focus:outline-none focus:border-turquoise focus:ring-2 focus:ring-turquoise/20">
-						</div>
-						<div class="relative">
-							<input type="text" name="company" placeholder="Empresa" class="w-full p-4 border-2 border-slate-200 rounded-lg font-sans text-base transition-all focus:outline-none focus:border-turquoise focus:ring-2 focus:ring-turquoise/20">
-						</div>
-						<div class="relative">
-							<textarea name="message" placeholder="Cuéntanos sobre tu proyecto" rows="5" required class="w-full p-4 border-2 border-slate-200 rounded-lg font-sans text-base transition-all focus:outline-none focus:border-turquoise focus:ring-2 focus:ring-turquoise/20 resize-none"></textarea>
-						</div>
-						<button type="submit" class="group w-fit px-8 py-4 text-base font-semibold rounded-lg transition-all duration-300 bg-turquoise text-white shadow-[0_4px_15px_rgba(6,182,212,0.3)] hover:bg-turquoise-dark hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(6,182,212,0.4)] disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2">
-							<span>Enviar Mensaje</span>
-							<Icon name="lucide:send" class="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+
+						<label class="field">
+							<span>Empresa</span>
+							<input type="text" name="company" placeholder="Nombre de tu empresa" />
+						</label>
+
+						<label class="field">
+							<span>Cuéntanos sobre tu proyecto</span>
+							<textarea name="message" rows="5" placeholder="¿Qué necesitas construir?" required></textarea>
+						</label>
+
+						<button type="submit" class="btn-enviar">
+							<span>Enviar solicitud</span>
+							<Icon name="lucide:send" class="w-5 h-5" />
 						</button>
 						<div id="form-message" class="hidden p-4 rounded-lg text-center font-medium"></div>
 					</form>
@@ -171,122 +255,3 @@ import { services, teamMembers, contactItems, testimonials, faqs, clients, stats
 		<!-- WhatsApp Floating Button -->
 		<WhatsAppButton phoneNumber="51902415972" message="Hola CogniCode, me gustaría saber más sobre sus servicios" />
 	</main>
-</Layout>
-
-<script>
-	// Scroll reveal animations
-	const observerOptions = {
-		threshold: 0.1,
-		rootMargin: '0px 0px -50px 0px'
-	};
-
-	const observer = new IntersectionObserver((entries) => {
-		entries.forEach(entry => {
-			if (entry.isIntersecting) {
-				const element = entry.target as HTMLElement;
-				element.style.opacity = '1';
-				element.style.transform = 'translateY(0)';
-				element.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
-				observer.unobserve(entry.target);
-			}
-		});
-	}, observerOptions);
-
-	// Observe all sections
-	document.addEventListener('DOMContentLoaded', () => {
-		const sections = document.querySelectorAll('section:not(.min-h-screen)');
-		sections.forEach(section => {
-			const element = section as HTMLElement;
-			element.style.opacity = '0';
-			element.style.transform = 'translateY(30px)';
-			observer.observe(section);
-		});
-
-		// Add scroll-based navbar background
-		const navbar = document.querySelector('nav');
-		window.addEventListener('scroll', () => {
-			if (window.scrollY > 100) {
-				navbar?.classList.add('shadow-lg');
-			} else {
-				navbar?.classList.remove('shadow-lg');
-			}
-		});
-
-		// Contact form handling with Web3Forms
-		const contactForm = document.getElementById('contact-form') as HTMLFormElement;
-		const formMessage = document.getElementById('form-message');
-
-		contactForm?.addEventListener('submit', async (e) => {
-			e.preventDefault();
-			
-			const submitButton = contactForm.querySelector('button[type="submit"]') as HTMLButtonElement;
-			const originalText = submitButton.innerHTML;
-			
-			// Disable button and show loading
-			submitButton.disabled = true;
-			submitButton.innerHTML = '<span>Enviando...</span>';
-			
-			try {
-				const formData = new FormData(contactForm);
-				const response = await fetch('https://api.web3forms.com/submit', {
-					method: 'POST',
-					body: formData
-				});
-
-				const data = await response.json();
-
-				if (data.success) {
-					// Show success message
-					if (formMessage) {
-						formMessage.classList.remove('hidden', 'bg-red-100', 'text-red-700');
-						formMessage.classList.add('bg-green-100', 'text-green-700');
-						formMessage.textContent = '¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.';
-					}
-					
-					// Reset form
-					contactForm.reset();
-					
-					// Hide message after 5 seconds
-					setTimeout(() => {
-						formMessage?.classList.add('hidden');
-					}, 5000);
-				} else {
-					throw new Error(data.message || 'Error al enviar el formulario');
-				}
-			} catch (error) {
-				// Show error message
-				if (formMessage) {
-					formMessage.classList.remove('hidden', 'bg-green-100', 'text-green-700');
-					formMessage.classList.add('bg-red-100', 'text-red-700');
-					formMessage.textContent = 'Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.';
-				}
-				
-				// Hide error message after 5 seconds
-				setTimeout(() => {
-					formMessage?.classList.add('hidden');
-				}, 5000);
-			} finally {
-				// Re-enable button
-				submitButton.disabled = false;
-				submitButton.innerHTML = originalText;
-			}
-		});
-	});
-</script>
-
-<style>
-	@keyframes fadeInUp {
-		from {
-			opacity: 0;
-			transform: translateY(30px);
-		}
-		to {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	.animate-fade-in-up {
-		animation: fadeInUp 0.8s ease-out forwards;
-	}
-</style>
