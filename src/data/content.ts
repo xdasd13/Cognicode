@@ -2,7 +2,7 @@ export const services = [
 	{
 		icon: 'lucide:lightbulb',
 		title: 'Consultoría Estratégica',
-		description: 'Análisis y planificación tecnológica alineada con tus objetivos de negocio.'
+		description: 'Análisis y planificación tecnológica alineada con tus objetivos de negocio.',
 	},
 	{
 		icon: 'lucide:zap',
@@ -33,28 +33,18 @@ export const services = [
 
 export const teamMembers = [
 	{
-		initials: 'CR',
-		name: 'Carlos Rodríguez',
-		role: 'CEO & Founder',
-		bio: 'Visionario tecnológico con 15 años de experiencia'
+	name: "Eduardo Carrion Leandro",
+	role: "Full Stack",
+	bio: "",
+	photo: "/img/Team/edcl.png",
+	github: "https://linkedin.com"
 	},
 	{
-		initials: 'AM',
-		name: 'Ana Martínez',
-		role: 'CTO',
-		bio: 'Experta en arquitectura de software y IA'
-	},
-	{
-		initials: 'LF',
-		name: 'Luis Fernández',
-		role: 'Lead Developer',
-		bio: 'Especialista en desarrollo full-stack'
-	},
-	{
-		initials: 'MG',
-		name: 'María González',
-		role: 'Project Manager',
-		bio: 'Gestión ágil y entrega de valor continuo'
+	name: "Fabian Alonso Yataco Tasayco",
+	role: "Full Stack",
+	bio: "",
+	photo: "/img/Team/fabiandev.png",
+	github: "https://linkedin.com"
 	}
 ];
 
@@ -62,7 +52,7 @@ export const contactItems = [
 	{
 		icon: 'lucide:mail',
 		title: 'Email',
-		value: 'contacto@cognicode.com'
+		value: 'cognicodeteam@gmail.com'
 	},
 	{
 		icon: 'lucide:phone',
@@ -72,7 +62,7 @@ export const contactItems = [
 	{
 		icon: 'lucide:map-pin',
 		title: 'Ubicación',
-		value: 'Ciudad de México, México'
+		value: 'Chincha Alta, Chincha, Perú'
 	}
 ];
 
