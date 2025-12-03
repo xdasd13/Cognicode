@@ -33,52 +33,18 @@ export const services = [
 
 export const teamMembers = [
 	{
-		initials: 'CR',
-		name: 'Carlos Rodríguez',
-		role: 'CEO & Founder',
-		bio: 'Visionario tecnológico con 15 años de experiencia'
+	name: "Eduardo Carrion Leandro",
+	role: "Full Stack",
+	bio: "",
+	photo: "/img/Team/edcl.png",
+	github: "https://linkedin.com"
 	},
 	{
-		initials: 'AM',
-		name: 'Ana Martínez',
-		role: 'Programador Frotend',
-		bio: '-'
-	},
-	{
-		initials: 'LF',
-		name: 'Luis Fernández',
-		role: 'Programador Full Stack',
-		bio: '-'
-	},
-	{
-		initials: 'PS',
-		name: 'Jesús Omar Pachas Saavedra',
-		role: 'Programador Backend',
-		bio: '-'
-	},
-	{
-		initials: 'MG',
-		name: '',
-		role: '-',
-		bio: '-'
-	},
-	{
-		initials: 'MG',
-		name: 'María González',
-		role: 'Project Manager',
-		bio: 'Gestión ágil y entrega de valor continuo'
-	},
-	{
-		initials: 'TQ',
-		name: 'Juan Fabian Trucios Quispe',
-		role: 'Desarrollador movil',
-		bio: '-'
-	},
-	{
-		initials: 'MG',
-		name: 'María González',
-		role: 'Project Manager',
-		bio: '-'
+	name: "Fabian Alonso Yataco Tasayco",
+	role: "Full Stack",
+	bio: "",
+	photo: "/img/Team/fabiandev.png",
+	github: "https://linkedin.com"
 	}
 ];
 
