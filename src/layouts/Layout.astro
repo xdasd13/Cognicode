@@ -1,7 +1,5 @@
 ---
 import '../styles/app.css';
-import serviciosScript from '../scripts/servicios.js?url';
-import homeScript from '../scripts/home.ts?url';
 
 const layoutStyles = '/assets/css/layout.css';
 
@@ -26,7 +24,9 @@ const layoutStyles = '/assets/css/layout.css';
 	</head>
 	<body>
 		<slot />
-		<script type="module" src={serviciosScript}></script>
-		<script type="module" src={homeScript}></script>
+		<script>
+			import '../scripts/servicios.js';
+			import '../scripts/home.ts';
+		</script>
 	</body>
 </html>
