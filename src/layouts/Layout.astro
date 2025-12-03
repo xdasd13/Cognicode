@@ -1,6 +1,7 @@
 ---
 import '../styles/app.css';
-const homeScript = (await import('../scripts/home.ts?url')).default;
+import homeScript from '../scripts/home.ts?url';
+import serviciosScript from '../scripts/servicios.js?url';
 const layoutStyles = '/assets/css/layout.css';
 
 ---
@@ -17,14 +18,14 @@ const layoutStyles = '/assets/css/layout.css';
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href={layoutStyles} />
 		<title>CogniCode - Soluciones Inteligentes</title>
 
 		<slot name="head" />
 	</head>
 	<body>
 		<slot />
-		<script src="../scripts/servicios.js"></script>
+		<script type="module" src={serviciosScript}></script>
 		<script type="module" src={homeScript}></script>
-		<link rel="stylesheet" href={layoutStyles} />
 	</body>
 </html>
