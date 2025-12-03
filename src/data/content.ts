@@ -45,6 +45,13 @@ export const teamMembers = [
 	bio: "",
 	photo: "/img/Team/fabiandev.png",
 	github: "https://linkedin.com"
+	},
+	{
+	name: "Joseph Emanuel Soncco Flores",
+	role: "Backend",
+	bio: "",
+	photo: "/img/Team/josephsf.jpeg",
+	github: "https://linkedin.com"
 	}
 ];
 
