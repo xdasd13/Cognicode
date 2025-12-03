@@ -4,13 +4,14 @@ interface Props {
 	title: string;
 	subtitle?: string;
 	bgColor?: 'white' | 'gray';
+	reveal?: boolean;
 }
 
-const { id, title, subtitle, bgColor = 'white' } = Astro.props;
+const { id, title, subtitle, bgColor = 'white', reveal = false } = Astro.props;
 const bgClass = bgColor === 'gray' ? 'bg-light-gray' : 'bg-white';
 ---
 
-<section id={id} class={`py-32 ${bgClass}`}>
+<section id={id} class={`py-32 ${bgClass}`} data-reveal={reveal ? '' : undefined}>
 	<div class="max-w-7xl mx-auto px-8">
 		<div class="text-center mb-16">
 			<h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-dark mb-4">

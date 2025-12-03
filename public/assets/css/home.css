@@ -1,0 +1,256 @@
+@keyframes homeFadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.home-animate-fade-in-up {
+	animation: homeFadeInUp 0.8s ease-out forwards;
+}
+
+[data-reveal] {
+	opacity: 0;
+	transform: translateY(28px);
+	transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.is-visible[data-reveal] {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.clients-swiper {
+	width: 100%;
+	display: block;
+	padding: 12px 0;
+}
+
+.client-slide {
+	width: auto;
+}
+
+.client-chip {
+	min-width: 160px;
+	padding: 18px 32px;
+	border-radius: 999px;
+	border: 2px solid rgba(148, 163, 184, 0.4);
+	color: #475569;
+	font-weight: 600;
+	font-size: 1.1rem;
+	background: #fff;
+	transition: border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.client-chip:hover {
+	border-color: #06b6d4;
+	color: #06b6d4;
+	transform: translateY(-4px);
+}
+
+.home-services {
+	min-height: 100vh;
+	background: linear-gradient(180deg, #fafbfc 0%, #f5f6f8 100%);
+	padding: 100px 20px;
+}
+
+.home-services .encabezado-servicios {
+	max-width: 700px;
+	margin: 0 auto 80px;
+	text-align: center;
+}
+
+.home-services .badge-encabezado {
+	display: inline-block;
+	padding: 8px 16px;
+	background: rgba(10, 132, 255, 0.1);
+	color: #0a84ff;
+	border-radius: 20px;
+	font-size: 0.85rem;
+	font-weight: 700;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+	margin-bottom: 16px;
+}
+
+.home-services .titulo-principal {
+	margin: 0 0 20px 0;
+	font-size: 2.8rem;
+	font-weight: 800;
+	color: #1a1a1a;
+	line-height: 1.15;
+	letter-spacing: -1px;
+}
+
+.home-services .subtitulo {
+	margin: 0;
+	font-size: 1.1rem;
+	line-height: 1.6;
+	color: #626366;
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.home-services .cuadricula-servicios {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+	gap: 32px;
+	max-width: 1280px;
+	margin: 0 auto 100px;
+}
+
+.home-services .seccion-cta {
+	max-width: 700px;
+	margin: 0 auto;
+	padding: 80px 60px;
+	background: linear-gradient(135deg, #0a84ff 0%, #1e7ce8 100%);
+	border-radius: 16px;
+	text-align: center;
+	box-shadow: 0 20px 60px rgba(10, 132, 255, 0.2);
+	position: relative;
+	overflow: hidden;
+}
+
+.home-services .seccion-cta::before {
+	content: '';
+	position: absolute;
+	top: -50%;
+	right: -50%;
+	width: 200%;
+	height: 200%;
+	background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+	background-size: 50px 50px;
+	z-index: 1;
+}
+
+.home-services .cta-contenido {
+	position: relative;
+	z-index: 2;
+}
+
+.home-services .seccion-cta h2 {
+	margin: 0 0 16px 0;
+	font-size: 2rem;
+	font-weight: 800;
+	color: white;
+	line-height: 1.2;
+	letter-spacing: -0.5px;
+}
+
+.home-services .seccion-cta p {
+	margin: 0 0 32px 0;
+	font-size: 1.05rem;
+	color: rgba(255, 255, 255, 0.95);
+	line-height: 1.6;
+}
+
+.home-services .btn-cta {
+	display: inline-block;
+	padding: 14px 40px;
+	background: white;
+	color: #0a84ff;
+	text-decoration: none;
+	border-radius: 10px;
+	font-weight: 800;
+	font-size: 1rem;
+	transition: all 0.3s ease;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+	letter-spacing: 0.3px;
+}
+
+.home-services .btn-cta:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.home-services .btn-cta:active {
+	transform: translateY(-1px);
+}
+
+@media (max-width: 1024px) {
+	.home-services .cuadricula-servicios {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 28px;
+	}
+}
+
+@media (max-width: 768px) {
+	.home-services {
+		padding: 60px 16px;
+	}
+
+	.home-services .encabezado-servicios {
+		margin-bottom: 60px;
+	}
+
+	.home-services .titulo-principal {
+		font-size: 2.2rem;
+	}
+
+	.home-services .subtitulo {
+		font-size: 1rem;
+	}
+
+	.home-services .cuadricula-servicios {
+		grid-template-columns: 1fr;
+		gap: 24px;
+		margin-bottom: 80px;
+	}
+
+	.home-services .seccion-cta {
+		padding: 60px 40px;
+	}
+
+	.home-services .seccion-cta h2 {
+		font-size: 1.6rem;
+	}
+
+	.home-services .seccion-cta p {
+		font-size: 1rem;
+		margin-bottom: 24px;
+	}
+
+	.home-services .btn-cta {
+		padding: 12px 32px;
+		font-size: 0.95rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.home-services {
+		padding: 40px 12px;
+	}
+
+	.home-services .encabezado-servicios {
+		margin-bottom: 40px;
+	}
+
+	.home-services .titulo-principal {
+		font-size: 1.7rem;
+	}
+
+	.home-services .subtitulo {
+		font-size: 0.95rem;
+	}
+
+	.home-services .cuadricula-servicios {
+		gap: 16px;
+		margin-bottom: 60px;
+	}
+
+	.home-services .seccion-cta {
+		padding: 40px 24px;
+	}
+
+	.home-services .seccion-cta h2 {
+		font-size: 1.3rem;
+	}
+
+	.home-services .seccion-cta p {
+		font-size: 0.9rem;
+	}
+}
