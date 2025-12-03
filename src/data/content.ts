@@ -36,7 +36,7 @@ export const teamMembers = [
 	name: "Eduardo Carrion Leandro",
 	role: "Full Stack",
 	bio: "",
-	photo: "/img/Team/edcl.png",
+	photo: "/img/Team/eduardocl.png",
 	github: "https://linkedin.com"
 	},
 	{
