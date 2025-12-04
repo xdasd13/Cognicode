@@ -231,24 +231,30 @@
 
 .btn-info {
 	background: #ffffff;
-	color: #1c78ff;
-	border: 1.5px solid rgba(28, 120, 255, 0.35);
+	color: #0a84ff;
+	border: 2px solid #0a84ff;
 	border-radius: 12px;
-	box-shadow: 0 10px 22px rgba(28, 120, 255, 0.12);
+	padding: 12px 20px !important;
+	font-weight: 600;
+	font-size: 0.95rem;
+	box-shadow: 0 8px 16px rgba(10, 132, 255, 0.15);
+	transition: all 0.2s ease;
+	cursor: pointer;
+	text-decoration: none;
 }
 
 .btn-info:hover {
-	background: rgba(28, 120, 255, 0.08);
-	border-color: rgba(28, 120, 255, 0.8);
-	box-shadow: 0 12px 26px rgba(28, 120, 255, 0.18);
-	transform: translateY(-1px);
+	background: rgba(10, 132, 255, 0.08);
+	border-color: #0a84ff;
+	box-shadow: 0 12px 24px rgba(10, 132, 255, 0.25);
+	transform: translateY(-2px);
 }
 
 .btn-info:active {
-	background: rgba(28, 120, 255, 0.14);
-	color: #0a4ed1;
+	background: rgba(10, 132, 255, 0.15);
+	color: #0873cc;
 	transform: translateY(0);
-	box-shadow: 0 4px 14px rgba(28, 120, 255, 0.18);
+	box-shadow: 0 4px 12px rgba(10, 132, 255, 0.2);
 }
 
 /* Scroll customizado para el modal */
