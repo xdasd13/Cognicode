@@ -1,0 +1,114 @@
+/* Services Carousel Styles */
+.swiper-services {
+	width: 100%;
+	padding: 20px 0 80px;
+	overflow: visible;
+}
+
+.swiper-wrapper {
+	align-items: center;
+}
+
+/* Slide card */
+.swiper-slide-services {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: transform 400ms ease, filter 300ms ease;
+	will-change: transform;
+	opacity: 0.7;
+}
+
+.swiper-slide-active {
+	transform: scale(1.05) !important;
+	filter: saturate(1.1) brightness(1.05);
+	opacity: 1;
+}
+
+/* Navigation */
+.swiper-button-prev-services,
+.swiper-button-next-services {
+	color: #0a84ff;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background: rgba(10, 132, 255, 0.12);
+	backdrop-filter: blur(8px);
+	border: 2px solid rgba(10, 132, 255, 0.3);
+	transition: all 0.3s ease;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 10;
+}
+
+.swiper-button-prev-services::after,
+.swiper-button-next-services::after {
+	font-size: 20px;
+	font-weight: 700;
+	color: #0a84ff;
+}
+
+.swiper-button-prev-services:hover,
+.swiper-button-next-services:hover {
+	background: rgba(10, 132, 255, 0.25);
+	border-color: rgba(10, 132, 255, 0.6);
+	transform: translateY(-50%) scale(1.1);
+	box-shadow: 0 8px 24px rgba(10, 132, 255, 0.2);
+}
+
+.swiper-button-prev-services:active,
+.swiper-button-next-services:active {
+	transform: translateY(-50%) scale(0.95);
+}
+
+/* Pagination */
+.swiper-pagination-services {
+	position: absolute;
+	bottom: 20px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	justify-content: center;
+	gap: 8px;
+}
+
+.swiper-pagination-bullet-services {
+	background: rgba(10, 132, 255, 0.4);
+	opacity: 1;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	transition: all 0.3s ease;
+	cursor: pointer;
+}
+
+.swiper-pagination-bullet-active-services {
+	background: #0a84ff;
+	width: 32px;
+	border-radius: 5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.swiper-button-prev-services,
+	.swiper-button-next-services {
+		width: 44px;
+		height: 44px;
+	}
+
+	.swiper-button-prev-services::after,
+	.swiper-button-next-services::after {
+		font-size: 18px;
+	}
+}
+
+@media (max-width: 480px) {
+	.swiper-button-prev-services,
+	.swiper-button-next-services {
+		display: none;
+	}
+
+	.swiper-pagination-services {
+		bottom: 10px;
+	}
+}

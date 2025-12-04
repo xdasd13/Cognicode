@@ -28,6 +28,10 @@ const servicio = {
 	costoAprox,
 	icono
 };
+
+// Mensaje personalizado para WhatsApp
+const mensaje = `Hola CogniCode me intereza el producto "${titulo}". Cuéntame más sobre ese servicio.`;
+const whatsappUrl = `https://wa.me/51934562407?text=${encodeURIComponent(mensaje)}`;
 ---
 
 <article class="service-card">
@@ -54,6 +58,6 @@ const servicio = {
 
 	<div class="service-card__actions">
 		<ModalServicio client:load servicio={servicio} />
-		<button class="service-card__cta">Consultar</button>
+		<a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="service-card__cta">Consultar</a>
 	</div>
 </article>

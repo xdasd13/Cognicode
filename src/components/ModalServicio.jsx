@@ -196,7 +196,12 @@ export const ModalServicio = ({ servicio }) => {
 
 									<div className="modal__cta">
 										<p>¿Interesado en este servicio?</p>
-										<a href="/Contacto" className="btn-contact">
+										<a 
+											href={`https://wa.me/51934562407?text=${encodeURIComponent(`Hola CogniCode, me interesa mucho el servicio "${servicio.titulo}"`)}`}
+											target="_blank"
+											rel="noopener noreferrer"
+											className="btn-contact"
+										>
 											Contáctanos Hoy
 										</a>
 									</div>

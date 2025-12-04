@@ -3,7 +3,7 @@
 }
 
 .contacto-section {
-	position: relative;
+	position: center;
 	background: linear-gradient(180deg, #f9fafc 0%, #f2f5fb 100%);
 	padding: 120px 0;
 	overflow: hidden;
@@ -44,6 +44,14 @@
 		border: 1px solid rgba(10, 132, 255, 0.1);
 	}
 
+	.contacto-hero {
+		max-width: 800px;
+		margin: 0 auto 80px;
+		text-align: center;
+		padding-bottom: 40px;
+		border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+	}
+
 	.hero-pill {
 		display: inline-flex;
 		padding: 8px 16px;
@@ -77,6 +85,8 @@
 		font-size: 1.05rem;
 		color: #5e6373;
 		line-height: 1.6;
+		max-width: 600px;
+		margin: 0 auto;
 	}
 
 	.contacto-grid {
@@ -309,6 +319,7 @@
 
 		.contacto-hero {
 			margin-bottom: 48px;
+			padding-bottom: 32px;
 		}
 
 		.hero-pill {
